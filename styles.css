@@ -1,0 +1,821 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
+
+html {
+  background-color: #181a1b;
+}
+
+#guessbar > div {
+  display: flex;
+
+  justify-content: center;
+}
+
+#guessbar > div > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#guessbar > div > input {
+  height: 50px;
+  width: 500px;
+
+  background-color: #00000000;
+  color: #b7c5cc;
+
+  border: 2px solid #303436;
+  border-radius: 0px;
+
+  font-size: 35px;
+
+  /*box-shadow: 0px 0px 5px #ddd;*/
+
+  font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+
+  border-collapse: collapse;
+}
+
+#guessbar > div > input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #303436; /* keep your same border */
+}
+
+#guessbar button {
+  box-sizing: content-box;
+  height: 50px;
+  width: 200px;
+
+  background-color: #00000000;
+
+  border: 2px solid #303436;
+  border-radius: 0px;
+
+  font-size: 25px;
+
+  padding: 1px;
+
+  /*box-shadow: 0px 0px 5px #ddd;*/
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+
+  transition: background-color 0.4s;
+
+  border-collapse: collapse;
+}
+
+#guessbar #seeresponsehistory {
+  font-size: 15px;
+}
+
+#guessbar button:hover {
+  background-color: #333;
+
+  transition: background-color 0.2s;
+}
+
+#completionbar > td img {
+  opacity: 0%;
+
+  transition: opacity 0.2s;
+}
+
+#completionbar > td.visible img {
+  opacity: 100%;
+  animation: bounce 0.2s ease;
+
+  transition: opacity 0.2s;
+}
+
+#completiongrid > table td {
+  border: 2px solid #303436;
+  width: 50px;
+  height: 50px;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 20px;
+
+  user-select: none;
+}
+
+#completiongrid > table {
+  border-collapse: collapse;
+}
+
+#completiongrid {
+  display: flex;
+
+  justify-content: center;
+
+  padding-bottom: 50px;
+}
+
+td > image {
+  margin: 0px;
+}
+
+#dayguesses > table td {
+  border: 2px solid #303436;
+  width: 90vw;
+  height: 50px;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 25px;
+}
+
+#dayguesses > table td.filled {
+  animation: bounce 0.1s ease-in-out;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(0.5);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#dayguesses > table {
+  border-collapse: collapse;
+
+  table-layout: fixed;
+  width: 85%;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+#dayguesses {
+  display: flex;
+
+  justify-content: center;
+
+  padding-bottom: 50px;
+}
+
+#objectcluemenu {
+  position: fixed;
+
+  width: 70vw;
+  height: 60vh;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -47.5%);
+
+  visibility: visible;
+
+  background-color: #181a1b;
+  border: 2px solid #555c5f;
+  box-shadow: 0px 0px 3px #555c5f;
+
+  display: flex;
+  justify-content: center;
+
+  padding-bottom: 50px;
+  padding-top: 70px;
+
+  opacity: 0%;
+
+  visibility: hidden;
+
+  transition: opacity 0.2s, transform 0.3s, visibility 0.2s step-end;
+}
+
+#objectcluemenu.visible {
+  opacity: 100%;
+
+  visibility: visible;
+
+  transform: translate(-50%, -50%);
+
+  transition: opacity 0.2s, transform 0.3s;
+}
+
+#objectcluemenu > table > tr > td {
+  color: #b7c5cc;
+}
+
+#objectcluemenu > table td {
+  border: 2px solid #303436;
+  width: 90%;
+  height: 50px;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 25px;
+}
+
+#objectcluemenu > table {
+  border-collapse: collapse;
+
+  table-layout: fixed;
+  width: 85%;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+#objectcluemenu > div {
+  position: fixed;
+  top: 1%;
+  right: 1%;
+
+  transition: transform 0.2s ease;
+}
+
+#objectcluemenu > div:hover {
+  transform: scale(1.1, 1.1);
+
+  transition: transform 0.2s ease;
+}
+
+#objectClueMenuExit {
+  user-select: none;
+  -webkit-user-drag: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lexend-deca-textfont {
+  font-family: "Lexend Deca", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: medium;
+  font-style: normal;
+}
+
+#category {
+  position: fixed;
+  top: -1%;
+  left: 5%;
+
+  font-family: "Lexend Deca";
+
+  color: #b7c5cc;
+}
+
+#countdownmenu,
+#infomenu,
+#weekcompletemenu,
+#infomenupage2,
+#calendarpopup {
+  position: fixed;
+
+  width: 70vw;
+  height: 60vh;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -47.5%);
+
+  visibility: visible;
+
+  background-color: #181a1b;
+  border: 2px solid #555c5f;
+  box-shadow: 0px 0px 3px #555c5f;
+
+  display: flex;
+  justify-content: center;
+
+  padding-bottom: 50px;
+  padding-top: 70px;
+
+  opacity: 0%;
+
+  visibility: hidden;
+
+  transition: opacity 0.2s, transform 0.3s, visibility step-end;
+}
+
+#calendarpopup #calendar table {
+  width: 80%;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 15px;
+
+  border-collapse: collapse;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#calendarpopup #calendar table td {
+  flex: 1;
+  aspect-ratio: 1/1;
+
+  border: 2px solid #303436;
+  height: 50px;
+  width: 50px;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 20px;
+
+  transition: background-color 0.1s ease;
+}
+
+#calendarpopup #calendar table td.hidden {
+  border: 0px;
+}
+
+#calendarpopup #calendar table td.data {
+  background-color: #00ff0099;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+#calendarpopup #calendar table td.today {
+  background-color: #aa0000ee;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+#countdownmenu.visible,
+#infomenu.visible,
+#weekcompletemenu.visible,
+#infomenupage2.visible,
+#calendarpopup.visible {
+  opacity: 100%;
+
+  transform: translate(-50%, -50%);
+
+  visibility: visible;
+
+  transition: opacity 0.2s, transform 0.3s, visibility step-start;
+}
+
+#countdownmenu > div,
+#infomenu > div,
+#weekcompletemenu > div,
+#infomenupage2 > div {
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#countdownmenu h1,
+#infomenu h1,
+#weekcompletemenu h1,
+#infomenupage2 h1 {
+  font-family: "Lexend Deca", monospace;
+  color: white;
+
+  font-size: 50px;
+  font-weight: 500;
+
+  font-variant-numeric: tabular-nums;
+
+  text-align: center;
+
+  margin: 0vw;
+}
+
+#infomenu h1 {
+  font-size: 50px;
+}
+
+#countdownmenu h2,
+#infomenu h2,
+#weekcompletemenu h2,
+#infomenupage2 h2,
+#calendarpopup h2 {
+  font-family: "Lexend Deca", monospace;
+  color: rgb(196, 196, 196);
+
+  font-size: 25px;
+  font-weight: 400;
+
+  font-variant-numeric: tabular-nums;
+
+  text-align: center;
+
+  margin: 0vw;
+}
+
+#infomenu h2,
+#infomenupage2 h2 {
+  font-size: 25px;
+}
+
+#infomenu p,
+#weekcompletemenu p,
+#infomenupage2 p {
+  font-family: "Lexend Deca", monospace;
+  color: white;
+
+  font-size: 1vw;
+  font-weight: 500;
+
+  font-variant-numeric: tabular-nums;
+
+  text-align: center;
+
+  margin: 0vw;
+}
+
+#clicknumbersforclues {
+  margin-top: auto;
+
+  width: min(60%, 500px);
+}
+
+#countdownmenu #countdown {
+  margin: 5px;
+
+  font-size: 10vw;
+}
+
+#countdownmenu #exitbutton,
+#infomenu #exitbutton,
+#weekcompletemenu #exitbutton,
+#infomenupage2 #exitbutton {
+  position: fixed;
+
+  right: 2%;
+  top: 2%;
+
+  transition: transform 0.1s ease;
+}
+
+#countdownmenu #exitbutton:hover,
+#infomenu #exitbutton:hover,
+#weekcompletemenu #exitbutton:hover {
+  transform: scale(1.1);
+
+  transition: transform 0.1s ease-in-out;
+}
+
+#infomenu #nextpagebutton {
+  width: 50px;
+
+  position: fixed;
+
+  bottom: 30px;
+  right: 30px;
+
+  transition: transform ease-in-out 0.2s;
+}
+
+#infomenupage2 #prevpagebutton {
+  width: 50px;
+
+  position: fixed;
+
+  bottom: 30px;
+  left: 30px;
+
+  transition: transform ease-in-out 0.2s;
+}
+
+#infomenupage2 #prevpagebutton:hover {
+  transform: scale(1.1);
+
+  transition: transform ease-in-out 0.2s;
+}
+
+#infomenu #nextpagebutton:hover {
+  transform: scale(1.1);
+
+  transition: transform ease-in-out 0.2s;
+}
+
+#weekresponses {
+  position: fixed;
+
+  width: 70vw;
+  height: 60vh;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  visibility: visible;
+
+  background-color: #181a1b;
+  border: 2px solid #555c5f;
+  box-shadow: 0px 0px 3px #555c5f;
+
+  display: flex;
+  justify-content: center;
+
+  padding-bottom: 20px;
+  padding-top: 20px;
+
+  opacity: 100%;
+
+  visibility: visible;
+
+  transition: opacity 0.2s, transform 0.3s, visibility 0.2s step-start;
+}
+
+#weekresponses.hidden {
+  opacity: 0%;
+
+  transform: translate(-50%, -47.5%);
+
+  visibility: hidden;
+
+  transition: opacity 0.2s, transform 0.3s, visibility 0.2s step-end;
+}
+
+#weekresponses > div {
+  height: 100%;
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#weekresponses h1 {
+  font-family: "Lexend Deca", monospace;
+  color: white;
+
+  font-size: 35px;
+  font-weight: 500;
+
+  user-select: none;
+}
+
+#weekresponses > div > h1 {
+  font-family: "Lexend Deca", monospace;
+  color: white;
+
+  font-size: 35px;
+  font-weight: 500;
+
+  text-align: center;
+}
+
+#weekresponses #dateselectbar {
+  display: flex;
+  justify-content: center;
+}
+
+#weekresponses #dateselectbar img {
+  margin: 20px;
+
+  transition: transform 0.2s ease;
+}
+
+#weekresponses #dateselectbar #arrowright:hover {
+  transform: scale(1.2);
+
+  transition: transform 0.2s ease;
+}
+
+#weekresponses #dateselectbar #arrowleft {
+  transform: scaleX(-1);
+
+  transition: transform 0.2s ease;
+}
+
+#weekresponses #dateselectbar #arrowleft:hover {
+  transform: scaleX(-1) scale(1.2);
+
+  transition: transform 0.2s ease;
+}
+
+#weekresponses #dayofweekindicator table {
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 15px;
+
+  border-collapse: collapse;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#weekresponses #dayofweekindicator table td {
+  flex: 1;
+  aspect-ratio: 1/1;
+
+  border: 2px solid #303436;
+  height: 50px;
+  width: 50px;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 20px;
+
+  transition: background-color 0.1s ease;
+}
+
+#weekresponses #dayofweekindicator table td.active {
+  background-color: #00ff0099;
+
+  transition: background-color 0.1s ease;
+}
+
+#weekresponses #exitbutton {
+  position: fixed;
+
+  right: 10px;
+  top: 10px;
+}
+
+#weekresponses #dayresponses table {
+  width: 100%;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  border-collapse: collapse;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+#weekresponses #dayresponses table td {
+  border: 2px solid #303436;
+  aspect-ratio: 1/1;
+  height: 3.8vh;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 3vh;
+
+  transition: background-color 0.1s ease;
+
+  padding: 0.8vh;
+}
+
+#weekresponses #dayresponses table td.correct {
+  background-color: #00ff0099;
+}
+
+#weekresponses #exitbutton {
+  transition: transform 0.2s ease;
+}
+
+#weekresponses #exitbutton:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  justify-content: center;
+  justify-items: center;
+}
+
+#objectcluemenuoverlay {
+  visibility: hidden;
+}
+
+#objectcluemenuoverlay.visible {
+  visibility: visible;
+}
+
+#miscicons {
+  display: flex;
+  justify-content: right;
+
+  margin: 10px;
+}
+
+#miscicons > * {
+  margin: 5px;
+}
+
+.share {
+  background-color: rgb(47, 138, 47);
+
+  color: rgb(255, 255, 255);
+  font-family: "Lexend Deca";
+
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  position: fixed;
+
+  bottom: 5vh;
+}
+
+.share > h3 {
+  font-size: 2vw;
+
+  margin: 10px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+
+  user-select: none;
+}
+
+.share > img {
+  width: 3vw;
+  height: 3vw;
+
+  user-select: none;
+}
+
+select {
+  background-color: #303436;
+  width: 15vw;
+  height: 4vw;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="12" viewBox="0 0 20 20" width="12" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 20,0 10,10"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+
+  border-radius: 0px;
+
+  margin: 10px;
+
+  color: #ddd;
+
+  font-size: 20px;
+  text-align: center;
+  font-family: "Lexend Deca";
+}
+
+#calendar > #dateselectbar {
+  display: flex;
+
+  align-items: center;
+}
+
+#calendarpopup #backarrow {
+  position: fixed;
+
+  width: 50px;
+
+  bottom: 10px;
+  left: 10px;
+
+  transition: transform 0.1s ease-in-out;
+}
+
+#calendarpopup #forwardarrow {
+  position: fixed;
+
+  width: 50px;
+
+  bottom: 10px;
+  right: 10px;
+
+  transition: transform 0.1s ease-in-out;
+}
+
+#calendarpopup .arrow:hover {
+  transform: scale(1.1);
+
+  transition: transform 0.1s ease-in-out;
+}

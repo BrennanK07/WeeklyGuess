@@ -1,0 +1,7 @@
+7 objects
+
+objectx2
+personx2
+locationx2
+event
+movie

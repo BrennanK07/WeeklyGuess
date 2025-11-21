@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title></title>
+  </head>
+
+  <body>
+    <div id="miscicons">
+      <img id="info" src="icons/info.svg">
+      <img id="help" src="icons/help.svg">
+    </div>
+    <div id="completiongrid">
+      <table>
+        <tr id="difficultybar">
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+        </tr>
+
+        <tr id="completionbar">
+          <td><img src="icons/check.svg"></img></td>
+          <td><img src="icons/check.svg"></img></td>
+          <td><img src="icons/check.svg"></img></td>
+          <td><img src="icons/check.svg"></img></td>
+          <td><img src="icons/check.svg"></img></td>
+          <td><img src="icons/check.svg"></img></td>
+          <td><img src="icons/check.svg"></img></td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="dayguesses">
+      <table>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="guessbar">
+      <div>
+        <input id="guessinput" type="text" autocomplete="off" />
+        
+        <div>
+          <button id="guessbutton">Submit</button>
+          <button id="seeresponsehistory">Previous Responses</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="objectcluemenuoverlay" class="overlay">
+    <div id="objectcluemenu">
+      <div>
+        <img id="objectcluemenuclose" src="icons/close.svg" />
+      </div>
+
+      <h1 id="category">Category</h1>
+
+      <table>
+        <tr>
+          <td>10/19</td>
+        </tr>
+        <tr>
+          <td>10/20</td>
+        </tr>
+        <tr>
+          <td>10/21</td>
+        </tr>
+        <tr>
+          <td>10/22</td>
+        </tr>
+        <tr>
+          <td>10/23</td>
+        </tr>
+        <tr>
+          <td>10/24</td>
+        </tr>
+        <tr>
+          <td>10/25</td>
+        </tr>
+      </table>
+    </div>
+    </div>
+
+    <div id="countdownmenu">
+      <div>
+        <img id="exitbutton" src="icons/close.svg">
+
+        <h1>You can guess again in</h1>
+        <h1 id="countdown">00:00:00</h1>
+
+        <div class="share"><h3>Share</h3> <img src="icons/share.svg"></div>
+      </div>
+    </div>
+
+    <div id="infomenu">
+      <div>
+        <img id="exitbutton" src="icons/close.svg">
+
+        <h1>How to play</h1>
+        <br>
+        <h2>Each week, you are given 7 hidden words</h2>
+        <br>
+        <h2>You have 7 days, 5 guesses per day, to guess the words</h2>
+        <br>
+        <h2>Each day, a clue is released for each word</h2>
+
+        <img id="clicknumbersforclues" src="images/clickforcorrespclues.png">
+      </div>
+
+      <img id="nextpagebutton" src="icons/arrow.svg">
+    </div>
+
+    <div id="infomenupage2">
+      <div>
+        <img id="exitbutton" src="icons/close.svg">
+
+        <h1>Answering Rules</h1>
+        <br>
+        <h2>Capitalization does not matter</h2>
+        <br>
+        <h2>Punctuation will never be in an answer</h2>
+        <br>
+        <h2>Spelling must be correct to be marked correct</h2>
+        <br>
+        <h2>Use "the" when needed; ex: The White House</h2>
+        <br>
+        <h2>Go with the most appropriate naming;<br> ex: John F Kennedy instead of John Kennedy</h2>
+      </div>
+
+      <img id="prevpagebutton" src="icons/arrowback.svg">
+    </div>
+
+    <div id="weekcompletemenu">
+      <div>
+        <img id="exitbutton" src="icons/close.svg">
+
+        <h1>You completed all the words this week!</h1>
+        <br>
+        <h2>Words will reset on Sunday, xx/xx</h2>
+
+        <div class="share"><h3>Share</h3> <img src="icons/share.svg"></div>
+      </div>
+    </div>
+
+    <div id="weekresponses" class="hidden">
+      <div>
+        <img id="exitbutton" src="icons/close.svg">
+
+        <h1>Response History</h1>
+
+        <div id="dayofweekindicator">
+          <table>
+            <tr>
+              <td>S</td>
+              <td>M</td>
+              <td>T</td>
+              <td>W</td>
+              <td>T</td>
+              <td>F</td>
+              <td>S</td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="dateselectbar">
+          <img id="arrowleft" src="icons/arrow.svg">
+          <h1 id="responsehistorydate">10/27/2025</h1>
+          <img id="arrowright" src="icons/arrow.svg">
+
+          <img id="calendarbutton" src="icons/calendar.svg">
+        </div>
+
+		    <div id="dayresponses">
+			    <table>
+				    <tr>
+					    <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+				    </tr>
+			    </table>
+		    </div>
+      </div>
+
+      <div id="calendarpopup">
+        <div id="calendar">
+          <div id="dateselectbar">
+            <select id="month">
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
+           
+            <select id="year">
+              <option>2025</option>
+            </select>
+          </div>
+
+          <br>
+
+          <table id="calendargraphic">
+				    <tr>
+					    <td>1</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+				    </tr>
+				    <tr>
+					    <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+				    </tr>
+            <tr>
+					    <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+				    </tr>
+			    </table>
+        </div>
+
+        <h2 id="calendardate">December 1969</h2>
+
+        <img class="arrow" id="backarrow" src="icons/arrowback.svg">
+        <img class="arrow" id="forwardarrow" src="icons/arrow.svg">
+
+        <img id="exitbutton" src="icons/close.svg">
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+  </body>
+</html>
