@@ -1,4 +1,4 @@
-import json from './solutions.json' with {type: 'json'}
+import json from '../solutions.json' with {type: 'json'}
 
 let answerBox = document.getElementById("guessinput");
 let guessButton = document.getElementById("guessbutton");
