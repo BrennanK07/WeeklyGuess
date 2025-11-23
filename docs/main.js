@@ -1,6 +1,4 @@
-import jsonSol from './solutions.json' with {type: 'json'}
-
-let json = jsonSol;
+import json from './solutions.json' with {type: 'json'}
 
 let answerBox = document.getElementById("guessinput");
 let guessButton = document.getElementById("guessbutton");
@@ -13,7 +11,7 @@ let dayOfWeek = new Date().getDay();
 let totalGuessesToday = 0;
 let dayGuesses = [];
 
-let guessData = JSON.parse(localStorage.getItem("guessData")) || [];
+let guessData = JSON.parse(localStorage.getItem("guessData"));
 
 let todayDate = getDateStr();
 
@@ -73,61 +71,52 @@ let calendarForwardArrow = document.querySelector("#calendarpopup #forwardarrow"
 let calendarGraphic = document.getElementById("calendargraphic");
 
 async function restoreGuesses() {
-    if (!guessData) {
+    if (guessData == null) {
         guessData = [];
-        return;
-    }
+    } else {
+        //set guesses to guesses already done today if found
+        let dayGuessData = guessData.find(guessData => guessData.date === todayDate);
 
-    // ====== 1. Restore guesses already done today ======
-    const dayGuessData = guessData.find(gd => gd.date === todayDate);
-    if (dayGuessData) {
-        // Replay guesses without blocking rendering
-        for (let guessText of dayGuessData.guesses) {
-            answerBox.value = guessText;
-            await guess(); // leave this as is, since guess() may handle DOM and storage
-        }
-    }
+        if (dayGuessData != undefined) {
 
-    // ====== 2. Go through previous day responses for the week ======
-    if (dayOfWeek > 0) {
-        const visibleIndices = [];
-
-        // Collect all previous guesses to hash in parallel
-        const previousGuesses = [];
-        for (let i = 0; i < dayOfWeek; i++) {
-            const dateStr = getDateStr(i + 1, false);
-            const savedDay = guessData.find(gd => gd.date === dateStr);
-            if (savedDay) {
-                savedDay.guesses.forEach(g => previousGuesses.push(g));
+            //console.log(dayGuessData.guesses);
+            for (let i = 0; i < dayGuessData.guesses.length; i++) {
+                //console.log(dayGuessData.guesses[i]);
+                answerBox.value = dayGuessData.guesses[i];
+                await guess();
             }
         }
 
-        if (previousGuesses.length > 0) {
-            // Hash all guesses in parallel
-            const hashedGuesses = await Promise.all(
-                previousGuesses.map(g => sha256(formatAnswer(g)))
-            );
+        //go through previous day responses for the week
+        for (let i = 0; i < dayOfWeek; i++) {
+            let dateStr = getDateStr(i + 1, false);
 
-            // Map hashes to solution indices
-            hashedGuesses.forEach(hash => {
-                const correctId = json.weeks[0].solutions.findIndex(
-                    s => s.solution === hash
-                );
-                if (correctId !== -1) {
-                    visibleIndices.push(correctId);
+            let dateSaveIndex = guessData.findIndex(guessData => guessData.date == dateStr);
+
+            if (dateSaveIndex != -1) {
+                let loadedGuesses = guessData[dateSaveIndex].guesses;
+
+                for (let j = 0; j < loadedGuesses.length; j++) {
+                    //console.log(formatAnswer(loadedGuesses[j]));
+                    let loadedGuess = await sha256(formatAnswer(loadedGuesses[j]));
+
+                    let correctId = -1;
+                    for (let k = 0; k < 7; k++) {
+                        if (json.weeks[0].solutions[k].solution == loadedGuess) {
+                            correctId = k;
+                        }
+                    }
+
+                    if (correctId != -1) {
+                        objectClueChecks[correctId].classList.add("visible");
+                    }
                 }
-            });
-
-            // Batch DOM updates
-            visibleIndices.forEach(id => objectClueChecks[id].classList.add("visible"));
+            }
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await restoreGuesses(); // hashes run after the page renders
-    setupComplete = true;
-
+document.addEventListener("DOMContentLoaded", () => {
     guessButton.addEventListener("click", guess);
     objectClueMenuExit.addEventListener("click", closeClueMenu);
 
@@ -189,6 +178,9 @@ objectClues.forEach((objectClue, index) => {
         objectClue.addEventListener("click", () => openClueMenu(index));
     });
 });
+
+await restoreGuesses();
+setupComplete = true;
 
 async function guess() {
     if (totalGuessesToday == 5 || answerBox.value == "") {
@@ -376,17 +368,27 @@ async function stepResponseHistoryDate(val) {
 
     if (histDayData != undefined) {
         //fill table with the responses from that day
-        const formattedGuesses = histDayData.guesses.map(g => formatAnswer(g));
-        const hashedGuesses = await Promise.all(formattedGuesses.map(g => sha256(g)));
+        for (let i = 0; i < histDayData.guesses.length; i++) {
+            responseHistoryDayResponses[i].innerHTML = histDayData.guesses[i];
 
-        hashedGuesses.forEach((hash, i) => {
-            const correctId = json.weeks[0].solutions.findIndex(s => s.solution === hash);
-            if (correctId !== -1) {
+            //set color of box if correct
+            let histAnswer = formatAnswer(histDayData.guesses[i]);
+
+            histAnswer = await sha256(histAnswer);
+
+            let correctId = -1;
+            for (let i = 0; i < 7; i++) {
+                if (json.weeks[0].solutions[i].solution == histAnswer) {
+                    correctId = i;
+                }
+            }
+
+            if (correctId != -1) {
                 responseHistoryDayResponses[i].classList.add("correct");
             } else {
                 responseHistoryDayResponses[i].classList.remove("correct");
             }
-        });
+        }
     } else {
         for (let i = 0; i < 5; i++) {
             responseHistoryDayResponses[i].innerHTML = "";
