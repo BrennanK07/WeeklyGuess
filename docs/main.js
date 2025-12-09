@@ -70,6 +70,12 @@ let calendarForwardArrow = document.querySelector("#calendarpopup #forwardarrow"
 
 let calendarGraphic = document.getElementById("calendargraphic");
 
+let previousWeekAnswers = document.getElementById("lastweekanswers");
+let previousWeekAnswersOpenButton = document.getElementById("lastweekanswersopen");
+let previousWeekAnswersExitButton = document.querySelector("#lastweekanswers #exitbutton");
+
+let onMainPage = true;
+
 async function restoreGuesses() {
     if (guessData == null) {
         guessData = [];
@@ -125,23 +131,23 @@ document.addEventListener("DOMContentLoaded", () => {
     responseHistoryArrowLeft.addEventListener("click", () => { stepResponseHistoryDate(-1) });
     responseHistroyArrowRight.addEventListener("click", () => { stepResponseHistoryDate(1) });
 
-    responseHistoryExitButton.addEventListener("click", () => { responseHistoryPanel.classList.add("hidden") });
-    repsonseHistoryOpenButton.addEventListener("click", () => { responseHistoryPanel.classList.remove("hidden") });
+    responseHistoryExitButton.addEventListener("click", () => { responseHistoryPanel.classList.add("hidden"); onMainPage = true; });
+    repsonseHistoryOpenButton.addEventListener("click", () => { onMainPage && responseHistoryPanel.classList.remove("hidden"); onMainPage = false; });
 
     responseHistoryCalendarButton.addEventListener("click", () => { responseHistoryCalendarPanel.classList.add("visible"); buildCalendar(); });
     responseHistoryCalendarPanelExitButton.addEventListener("click", () => { responseHistoryCalendarPanel.classList.remove("visible") });
 
-    countdownMenuExit.addEventListener("click", () => { countdownMenu.classList.remove("visible") });
+    countdownMenuExit.addEventListener("click", () => { countdownMenu.classList.remove("visible"); onMainPage = true; });
 
-    infoButton.addEventListener("click", () => { countdownMenu.classList.add("visible") });
+    infoButton.addEventListener("click", () => { onMainPage && countdownMenu.classList.add("visible"); onMainPage = false; });
 
-    infoMenuExit.addEventListener("click", () => { infoMenu.classList.remove("visible") });
-    helpButton.addEventListener("click", () => { infoMenu.classList.add("visible") });
+    infoMenuExit.addEventListener("click", () => { infoMenu.classList.remove("visible"); onMainPage = true; });
+    helpButton.addEventListener("click", () => { onMainPage && infoMenu.classList.add("visible"); onMainPage = false; });
 
-    infoMenuArrow.addEventListener("click", () => { infoMenu.classList.remove("visible"); infoMenuPage2.classList.add("visible") });
-    infoMenuBack.addEventListener("click", () => { infoMenu.classList.add("visible"); infoMenuPage2.classList.remove("visible") });
+    infoMenuArrow.addEventListener("click", () => { infoMenu.classList.remove("visible"); infoMenuPage2.classList.add("visible"); onMainPage = false; });
+    infoMenuBack.addEventListener("click", () => { infoMenu.classList.add("visible"); infoMenuPage2.classList.remove("visible"); onMainPage = false; });
 
-    infoMenuPage2Exit.addEventListener("click", () => { infoMenuPage2.classList.remove("visible") });
+    infoMenuPage2Exit.addEventListener("click", () => { infoMenuPage2.classList.remove("visible"); onMainPage = true; });
 
     weekCompleteMenuExitButton.addEventListener("click", () => { weekCompleteMenu.classList.remove("visible") });
 
@@ -154,6 +160,38 @@ document.addEventListener("DOMContentLoaded", () => {
     calendarForwardArrow.addEventListener("click", () => { selectedMonth++; buildCalendar(true); });
 
     calendarPopupSpaces.forEach((square, i) => { square.addEventListener("click", () => { calendarSpaceClicked(i) }); });
+
+    //previousWeekAnswersOpenButton.addEventListener("click", () => { previousWeekAnswers.classList.add("visible"); onMainPage = false });
+    previousWeekAnswersExitButton.addEventListener("click", () => { previousWeekAnswers.classList.remove("visible"); onMainPage = true });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "1") {
+            openClueMenu(0);
+        }
+        if (event.key === "2") {
+            openClueMenu(1);
+        }
+        if (event.key === "3") {
+            openClueMenu(2);
+        }
+        if (event.key === "4") {
+            openClueMenu(3);
+        }
+        if (event.key === "5") {
+            openClueMenu(4);
+        }
+        if (event.key === "6") {
+            openClueMenu(5);
+        }
+        if (event.key === "7") {
+            openClueMenu(6);
+        }
+
+        if (event.key == "Escape") {
+            closeClueMenu();
+        }
+    });
+
 });
 
 answerBox.addEventListener("keydown", (event) => {
@@ -254,6 +292,12 @@ let objectClueMenuCategory = document.getElementById("category");
 let objectClueTable = document.querySelectorAll("#objectcluemenu > table tr td");
 
 function openClueMenu(itemIndex) {
+    if (!onMainPage && !objectClueMenu.classList.contains("visible")) {
+        return;
+    }
+
+    onMainPage = false;
+
     objectClueMenuCategory.innerHTML = json.weeks[activeSolutionId].solutions[itemIndex].category;
 
     for (let i = 0; i < 7; i++) {
@@ -270,6 +314,8 @@ function openClueMenu(itemIndex) {
 }
 
 function closeClueMenu() {
+    onMainPage = true;
+
     objectClueMenu.classList.remove("visible");
     objectClueMenuOverlay.classList.remove("visible");
 }
