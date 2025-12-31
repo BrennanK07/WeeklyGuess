@@ -71,10 +71,19 @@ let calendarForwardArrow = document.querySelector("#calendarpopup #forwardarrow"
 let calendarGraphic = document.getElementById("calendargraphic");
 
 let previousWeekAnswers = document.getElementById("lastweekanswers");
-let previousWeekAnswersOpenButton = document.getElementById("lastweekanswersopen");
+let previousWeekAnswersOpenButton = document.getElementById("seesolutions");
 let previousWeekAnswersExitButton = document.querySelector("#lastweekanswers #exitbutton");
 
+let dayIndicator = document.querySelector("#dayindicator h2");
+dayIndicator.innerHTML = dayOfWeek + 1;
+
+let countdownMenuShareButton = document.querySelector("#countdownmenu .share");
+
 let onMainPage = true;
+
+let score = localStorage.getItem("score") || 0;
+let scoreDisplay = document.querySelector("#score h2");
+scoreDisplay.innerHTML = score;
 
 async function restoreGuesses() {
     if (guessData == null) {
@@ -152,6 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
     weekCompleteMenuExitButton.addEventListener("click", () => { weekCompleteMenu.classList.remove("visible") });
 
     weekCompleteShareButton.addEventListener("click", () => { share(true) });
+
+    countdownMenuShareButton.addEventListener("click", () => { share(true) });
 
     calendarMonthSelect.addEventListener("change", () => { selectedMonth = calendarMonthSelect.selectedIndex; buildCalendar(true) });
     calendarYearSelect.addEventListener("change", () => { selectedYear = calendarYearSelect.selectedIndex + 2025; buildCalendar(true) });
@@ -241,9 +252,17 @@ async function guess() {
         }
     }
 
-    if (correctId != -1 && !objectClueChecks[correctId].classList.contains("visible")) {
+    if (correctId != -1 && !objectClueChecks[correctId].classList.contains("visible") && dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099") {
         dayGuessCells[totalGuessesToday].style.backgroundColor = "#00ff0099";
         objectClueChecks[correctId].classList.add("visible");
+
+        if(setupComplete){
+            let totalWords = parseInt(localStorage.getItem("totalwords")) || 0;
+
+            totalWords++;
+            localStorage.setItem("totalwords", totalWords);
+            document.getElementById("wordsstat").innerHTML = totalWords;
+        }
 
         //console.log("correct");
     } else {
@@ -265,6 +284,13 @@ async function guess() {
         }
 
         saveGuessData();
+
+        //stats
+        let totalGuesses = parseInt(localStorage.getItem("totalguesses")) || 0;
+
+        totalGuesses++;
+        localStorage.setItem("totalguesses", totalGuesses);
+        document.getElementById("guessesstat").innerHTML = totalGuesses;
     }
 
     answerBox.value = "";
@@ -448,8 +474,90 @@ async function definiteResponseHistoryDate(val) {
     stepResponseHistoryDate(val + displayDate);
 }
 
-function share(shareWeek = false) { //shares just today if false
+async function share(shareWeek = false) { //shares just today if false
+    let output = "WeekWord " + getDateStr() + "\n";
 
+    //word completion
+    for(let i = 0; i < 7; i++){
+        let difficultyVal = parseInt(json.weeks[activeSolutionId].solutions[i].difficulty);
+
+        if(difficultyVal == 0){
+            output += "🟩";
+        }else if(difficultyVal == 1){
+            output += "🟨";
+        }else if(difficultyVal == 2){
+            output += "🟥";
+        }else{
+            output += "🟪";
+        }
+    }
+
+    output += "\n";
+
+    //word completion checks
+    for (let i = 0; i < 7; i++) {
+        if (objectClueChecks[i].classList.contains("visible")) {
+            output += "✅";
+        } else {
+            output += "⬜";
+        }
+    }
+
+    output += "\n\n";
+
+    /*
+    let daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"];
+
+    if (shareWeek) {
+        for (let i = 0; i <= dayOfWeek; i++) {
+            output += daysOfWeek[i] + " ";
+        }
+    }*/
+
+    output += "Week Progress\n";
+
+    let usedWords = [];
+
+    for(let i = 0; i < 5; i++){
+        for(let j = 0; j <= dayOfWeek; j++){
+            let histDayData = guessData.find(guessData => guessData.date === getDateStr(dayOfWeek - j, false));
+
+            if(histDayData != undefined && histDayData.guesses.length > i){
+                let histAnswer = formatAnswer(histDayData.guesses[i]);
+
+                histAnswer = await sha256(histAnswer);
+
+                let correctId = -1;
+                for (let k = 0; k < 7; k++) {
+                    if (json.weeks[0].solutions[k].solution == histAnswer) {
+                        correctId = k;
+                    }
+                }
+
+                if (correctId != -1 && usedWords.indexOf(correctId) == -1) {
+                    output += "✅";
+                    usedWords.push(correctId);
+                } else {
+                    output += "⬜";
+                }
+            }else{
+                output += "⬛";
+            }
+        }
+
+        output += "\n";
+    }
+
+    //console.log(output);
+
+    if (navigator.share && isMobile()) {
+        navigator.share({
+            text: output
+        });
+    } else {
+        navigator.clipboard.writeText(output);
+        alert("Copied to clipboard!");
+    }
 }
 
 let selectedMonth = new Date().getMonth();
@@ -513,7 +621,7 @@ function buildCalendar(isCallback = false) { //what the fuck
 
             let dateOffset = (transformDate - new Date()) / (1000 * 60 * 60 * 24);
 
-            let calendarDayData = guessData.find(guessData => guessData.date === getDateStr(-dateOffset - 1, false));
+            let calendarDayData = guessData.find(guessData => guessData.date === getDateStr(-dateOffset, false));
 
             if (Math.round(dateOffset) == 0) {
                 calendarPopupSpaces[i].classList.add("today");
@@ -583,4 +691,56 @@ function start() {
     for (let i = 0; i < currentYear - 2025; i++) {
         calendarYearSelect.add(new Option(i + 2025 + 1));
     }
+
+    //streak updater
+    let streak = parseInt(localStorage.getItem("daystreak")) || 1;
+    let lastDateStr = localStorage.getItem("lastdate") || null;
+
+    if(getDateStr(0,false) == lastDateStr){
+        //same day, do nothing
+    }else if(getDateStr(1,false) == lastDateStr){
+        //next day, increase streak
+        streak++;
+        localStorage.setItem("daystreak", streak);
+        localStorage.setItem("lastdate", getDateStr(0,false));
+    }else{
+        //missed day, reset streak
+        streak = 1;
+        localStorage.setItem("daystreak", streak);
+        localStorage.setItem("lastdate", getDateStr(0,false));
+    }
+
+    document.getElementById("daystreakstat").innerHTML = streak;
+
+    //other stats
+    let totalWords = localStorage.getItem("totalwords") || 0;
+    let totalGuesses = localStorage.getItem("totalguesses") || 0;
+
+    document.getElementById("wordsstat").innerHTML = totalWords;
+    document.getElementById("guessesstat").innerHTML = totalGuesses;
+
+    updateWeekCompletionPercentageStat();
+}
+
+function updateWeekCompletionPercentageStat(){
+    let totalCompleted = 0;
+    for(let i = 0; i < 7; i++){
+        if(objectClueChecks[i].classList.contains("visible")){
+            totalCompleted++;
+        }
+    }
+
+    let percentage = Math.floor((totalCompleted / 7) * 100);
+
+    document.getElementById("weekprogressstat").innerHTML = percentage + "%";
+}
+
+function isMobile() {
+    return navigator.userAgentData?.mobile ||
+           /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function updateScoreDisplay(){
+    scoreDisplay.innerHTML = score;
+    localStorage.setItem("score", score);
 }

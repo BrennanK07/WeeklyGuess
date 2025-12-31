@@ -11,7 +11,15 @@
 
   <body>
     <div id="topbanner">
+      <div id="score">
+        <p>Score</p>
+        <h2>0</h2>
+      </div>
       <img id="logo" src="images/logobanner.png">
+      <div id="dayindicator">
+        <p>Day</p>
+        <h2>0</h2>
+      </div>
     </div>
 
     <div id="bannerspacing"></div>
@@ -118,6 +126,21 @@
         <h1>You can guess again in</h1>
         <h1 id="countdown">00:00:00</h1>
 
+        <table>
+          <tr>
+            <th>Day Streak</th>
+            <th>Words</th>
+            <th>Guesses</th>
+            <th>Week Progress</th>
+          </tr>
+          <tr>
+            <td id="daystreakstat">100</td>
+            <td id="wordsstat">41</td>
+            <td id="guessesstat">67</td>
+            <td id="weekprogressstat">50%</td>
+          </tr>
+        </table>
+
         <div class="share"><h3>Share</h3> <img src="icons/share.svg"></div>
       </div>
     </div>
@@ -127,6 +150,8 @@
         <img id="exitbutton" src="icons/close.svg">
 
         <h1>How to play</h1>
+        <br>
+        <h2>Welcome to <strong>WeekWord!</strong></h2>
         <br>
         <h2>Each week, you are given 7 hidden words</h2>
         <br>
@@ -200,25 +225,27 @@
           <img id="calendarbutton" src="icons/calendar.svg">
         </div>
 
-		    <div id="dayresponses">
-			    <table>
-				    <tr>
-					    <td></td>
-				    </tr>
-				    <tr>
-					    <td></td>
-				    </tr>
-				    <tr>
-					    <td></td>
-				    </tr>
-				    <tr>
-					    <td></td>
-				    </tr>
-				    <tr>
-					    <td></td>
-				    </tr>
-			    </table>
-		    </div>
+        <!--button id="seesolutions">See Week Solutions</button-->
+
+          <div id="dayresponses">
+            <table>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+            </table>
+        </div>
       </div>
 
       <div id="calendarpopup">

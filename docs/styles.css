@@ -40,7 +40,8 @@ html {
   border-color: #303436; /* keep your same border */
 }
 
-#guessbar button {
+#guessbar button,
+#seesolutions {
   box-sizing: content-box;
   height: 50px;
   width: 200px;
@@ -69,7 +70,14 @@ html {
   font-size: 15px;
 }
 
-#guessbar button:hover {
+#seesolutions {
+  font-size: 15px;
+
+  padding: 0px;
+}
+
+#guessbar button:hover,
+#seesolutions:hover {
   background-color: #333;
 
   transition: background-color 0.2s;
@@ -148,23 +156,6 @@ td > image {
   100% {
     transform: scale(1);
   }
-}
-
-#lastweekanswers > div > table td {
-  border: 2px solid #303436;
-  width: 90%;
-  height: 50px;
-
-  text-align: center;
-
-  color: #b7c5cc;
-
-  font-family: "Lexend Deca";
-  font-size: 25px;
-}
-
-#lastweekanswers > div {
-  width: 10%;
 }
 
 #dayguesses > table {
@@ -536,8 +527,6 @@ td > image {
   position: fixed;
 
   width: 70vw;
-  height: 60vh;
-
   left: 50%;
   top: 50%;
 
@@ -668,6 +657,41 @@ td > image {
   transition: background-color 0.1s ease;
 }
 
+#weekresponses #weekanswers {
+  flex-basis: 20%;
+}
+
+#weekresponses #weekanswers table {
+  text-align: center;
+
+  width: 100%;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 15px;
+
+  border-collapse: collapse;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#weekresponses #weekanswers table td {
+  border: 2px solid #303436;
+  height: 30px;
+  width: 100%;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 15px;
+
+  transition: background-color 0.1s ease;
+}
+
 #weekresponses #exitbutton {
   position: fixed;
 
@@ -692,10 +716,14 @@ td > image {
   white-space: normal;
 }
 
+#weekresponses #dayresponses {
+  flex-basis: 80%;
+}
+
 #weekresponses #dayresponses table td {
   border: 2px solid #303436;
   aspect-ratio: 1/1;
-  height: 3.8vh;
+  height: calc(170px / 5);
 
   text-align: center;
 
@@ -720,6 +748,51 @@ td > image {
 #weekresponses #exitbutton:hover {
   transform: scale(1.1);
   transition: transform 0.2s ease;
+}
+
+#responsescontainer {
+  display: flex;
+
+  align-items: stretch;
+}
+
+#lastweekanswers table {
+  margin-top: 50px;
+  width: 100%;
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  border-collapse: collapse;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+#lastweekanswers table td {
+  border: 2px solid #303436;
+  aspect-ratio: 1/1;
+  height: calc(170px / 5);
+
+  text-align: center;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca";
+  font-size: 3vh;
+
+  transition: background-color 0.1s ease;
+
+  padding: 0.8vh;
+}
+
+#weekresponses #dayresponses table td.correct {
+  background-color: #00ff0099;
 }
 
 .overlay {
@@ -869,4 +942,50 @@ select {
 
 #bannerspacing {
   height: 100px;
+}
+
+#countdownmenu table {
+  width: 70%;
+
+  font-family: "Lexend Deca";
+  color: #b7c5cc;
+
+  text-align: center;
+}
+
+#countdownmenu table td {
+  font-size: 50px;
+  width: 25%;
+}
+
+#dayindicator{
+  font-family: Lexend Deca, sans-serif;
+
+  color: #b7c5cc;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#dayindicator *{
+  margin: 0px;
+
+  text-align: center;
+}
+
+#score {
+  font-family: Lexend Deca, sans-serif;
+
+  color: #b7c5cc;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#score * {
+  margin: 0px;
+
+  text-align: center;
 }
