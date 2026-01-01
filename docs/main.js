@@ -81,9 +81,14 @@ let countdownMenuShareButton = document.querySelector("#countdownmenu .share");
 
 let onMainPage = true;
 
-let score = localStorage.getItem("score") || 0;
+let score = parseInt(localStorage.getItem("score")) || 0;
 let scoreDisplay = document.querySelector("#score h2");
 scoreDisplay.innerHTML = score;
+
+let weekCompleteMenuWordsWillResetText = document.querySelector("#weekcompletemenu #wordswillreset");
+
+let objectClueMenuLeftArrow = document.querySelector("#objectcluemenu #leftarrow");
+let objectClueMenuRightArrow = document.querySelector("#objectcluemenu #rightarrow");
 
 async function restoreGuesses() {
     if (guessData == null) {
@@ -172,6 +177,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     calendarPopupSpaces.forEach((square, i) => { square.addEventListener("click", () => { calendarSpaceClicked(i) }); });
 
+    objectClueMenuLeftArrow.addEventListener("click", () => {
+        let currentCategory = objectClueMenuCategory.innerHTML;
+
+        let currentIndex = -1;
+        for (let i = 0; i < 7; i++) {
+            if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                currentIndex = i;
+            }
+        }
+
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+            newIndex = 6;
+        }
+
+        openClueMenu(newIndex);
+    });
+
+    objectClueMenuRightArrow.addEventListener("click", () => {
+        let currentCategory = objectClueMenuCategory.innerHTML;
+
+        let currentIndex = -1;
+        for (let i = 0; i < 7; i++) {
+            if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                currentIndex = i;
+            }
+        }
+
+        let newIndex = currentIndex + 1;
+        if (newIndex > 6) {
+            newIndex = 0;
+        }
+
+        openClueMenu(newIndex);
+    });
+
     //previousWeekAnswersOpenButton.addEventListener("click", () => { previousWeekAnswers.classList.add("visible"); onMainPage = false });
     previousWeekAnswersExitButton.addEventListener("click", () => { previousWeekAnswers.classList.remove("visible"); onMainPage = true });
 
@@ -200,6 +241,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (event.key == "Escape") {
             closeClueMenu();
+        }
+
+        if(event.key == "ArrowLeft"){
+            let currentCategory = objectClueMenuCategory.innerHTML;
+
+            let currentIndex = -1;
+            for (let i = 0; i < 7; i++) {
+                if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                    currentIndex = i;
+                }
+            }
+
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) {
+                newIndex = 6;
+            }
+
+            openClueMenu(newIndex);
+        }
+
+        if(event.key == "ArrowRight"){
+            let currentCategory = objectClueMenuCategory.innerHTML;
+
+            let currentIndex = -1;
+            for (let i = 0; i < 7; i++) {
+                if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                    currentIndex = i;
+                }
+            }
+
+            let newIndex = currentIndex + 1;
+            if (newIndex > 6) {
+                newIndex = 0;
+            }
+
+            openClueMenu(newIndex);
         }
     });
 
@@ -232,6 +309,8 @@ await restoreGuesses();
 setupComplete = true;
 
 async function guess() {
+    let guessCorrect = false;
+
     if (totalGuessesToday == 5 || answerBox.value == "") {
         return;
     }
@@ -262,6 +341,11 @@ async function guess() {
             totalWords++;
             localStorage.setItem("totalwords", totalWords);
             document.getElementById("wordsstat").innerHTML = totalWords;
+
+            guessCorrect = true;
+
+            score += 5 * (parseInt(json.weeks[activeSolutionId].solutions[correctId].difficulty) + 1) * (7 - dayOfWeek);
+            updateScoreDisplay();
         }
 
         //console.log("correct");
@@ -291,6 +375,23 @@ async function guess() {
         totalGuesses++;
         localStorage.setItem("totalguesses", totalGuesses);
         document.getElementById("guessesstat").innerHTML = totalGuesses;
+
+        if(!guessCorrect){
+            score++;
+            updateScoreDisplay();
+        }
+
+        //checks for week completion
+        let allComplete = true;
+        for (let i = 0; i < 7; i++) {
+            if (!objectClueChecks[i].classList.contains("visible")) {
+                allComplete = false;
+            }
+        }
+
+        if (allComplete) {
+            weekCompleteMenu.classList.add("visible");
+        }
     }
 
     answerBox.value = "";
@@ -555,9 +656,27 @@ async function share(shareWeek = false) { //shares just today if false
             text: output
         });
     } else {
-        navigator.clipboard.writeText(output);
-        alert("Copied to clipboard!");
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(output)
+                .then(() => alert("Copied to clipboard!"))
+                .catch(() => legacyCopy(output));
+        } else {
+            legacyCopy(output);
+        }
     }
+}
+
+function legacyCopy(text) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    alert("Copied to clipboard!");
 }
 
 let selectedMonth = new Date().getMonth();
@@ -619,15 +738,17 @@ function buildCalendar(isCallback = false) { //what the fuck
                 calendarPopupSpaces[i].classList.remove("today");
             }
 
-            let dateOffset = (transformDate - new Date()) / (1000 * 60 * 60 * 24);
+            let dateOffset = Math.round((transformDate - new Date()) / (1000 * 60 * 60 * 24));
 
             let calendarDayData = guessData.find(guessData => guessData.date === getDateStr(-dateOffset, false));
 
-            if (Math.round(dateOffset) == 0) {
+            //console.log(dateOffset);
+
+            if (dateOffset == 0 && !reachedEndOfMonth) {
                 calendarPopupSpaces[i].classList.add("today");
             }
 
-            if (calendarDayData != undefined) {
+            if (calendarDayData != undefined && !reachedEndOfMonth) {
                 calendarPopupSpaces[i].classList.add("data");
             } else {
                 calendarPopupSpaces[i].classList.remove("data");
@@ -720,6 +841,9 @@ function start() {
     document.getElementById("guessesstat").innerHTML = totalGuesses;
 
     updateWeekCompletionPercentageStat();
+
+    //update week completion with correct information
+    weekCompleteMenuWordsWillResetText.innerHTML = "Words will reset on Sunday, " + getDateStr(1 - dayOfWeek, true, false);
 }
 
 function updateWeekCompletionPercentageStat(){
