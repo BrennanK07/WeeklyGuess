@@ -90,6 +90,8 @@ let weekCompleteMenuWordsWillResetText = document.querySelector("#weekcompleteme
 let objectClueMenuLeftArrow = document.querySelector("#objectcluemenu #leftarrow");
 let objectClueMenuRightArrow = document.querySelector("#objectcluemenu #rightarrow");
 
+let objectClueMenuPageIndex = document.getElementById("clueindex");
+
 async function restoreGuesses() {
     if (guessData == null) {
         guessData = [];
@@ -192,7 +194,11 @@ document.addEventListener("DOMContentLoaded", () => {
             newIndex = 6;
         }
 
-        openClueMenu(newIndex);
+        if(!onMainPage){
+            openClueMenu(newIndex);
+        }else{
+            openClueMenu(0);
+        }
     });
 
     objectClueMenuRightArrow.addEventListener("click", () => {
@@ -210,7 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
             newIndex = 0;
         }
 
-        openClueMenu(newIndex);
+        if(!onMainPage){
+            openClueMenu(newIndex);
+        }else{
+            openClueMenu(0);
+        }
     });
 
     //previousWeekAnswersOpenButton.addEventListener("click", () => { previousWeekAnswers.classList.add("visible"); onMainPage = false });
@@ -391,6 +401,9 @@ async function guess() {
 
         if (allComplete) {
             weekCompleteMenu.classList.add("visible");
+            score += 50 * (7 - dayOfWeek);
+            updateScoreDisplay();
+            updateWeekCompletionPercentageStat();
         }
     }
 
@@ -422,6 +435,8 @@ function openClueMenu(itemIndex) {
     if (!onMainPage && !objectClueMenu.classList.contains("visible")) {
         return;
     }
+
+    objectClueMenuPageIndex.innerHTML = (itemIndex + 1).toString();
 
     onMainPage = false;
 
@@ -658,7 +673,7 @@ async function share(shareWeek = false) { //shares just today if false
     } else {
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(output)
-                .then(() => alert("Copied to clipboard!"))
+                .then(() => copyToClipboardNotice())
                 .catch(() => legacyCopy(output));
         } else {
             legacyCopy(output);
@@ -676,7 +691,7 @@ function legacyCopy(text) {
     ta.select();
     document.execCommand("copy");
     document.body.removeChild(ta);
-    alert("Copied to clipboard!");
+    copyToClipboardNotice();
 }
 
 let selectedMonth = new Date().getMonth();
@@ -867,4 +882,14 @@ function isMobile() {
 function updateScoreDisplay(){
     scoreDisplay.innerHTML = score;
     localStorage.setItem("score", score);
+}
+
+function copyToClipboardNotice(){
+    let notice = document.getElementById("copiedtoclipboardnotice");
+
+    notice.classList.add("visible");
+
+    setTimeout(() => {
+        notice.classList.remove("visible");
+    }, 2000);
 }

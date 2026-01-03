@@ -1029,3 +1029,53 @@ select {
 #objectcluemenu #rightarrow{
   right: 2%;
 }
+
+#clueindex{
+  position: fixed;
+  bottom: 2%;
+
+  color: #b7c5cc;
+
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 25px;
+
+  user-select: none;
+}
+
+#copiedtoclipboardnotice{
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: #131516;
+
+  padding: 10px;
+
+  border-radius: 0px;
+
+  box-shadow: 0px 0px 10px #131516aa;
+
+  visibility: hidden;
+  opacity: 0%;
+
+  transition: opacity 0.2s ease-out, visibility 0.2s step-end;
+}
+
+#copiedtoclipboardnotice.visible{
+  visibility: visible;
+  opacity: 100%;
+
+  transition: opacity 0.2s ease-in;
+}
+
+#copiedtoclipboardnotice h2{
+  font-family: "Lexend Deca", sans-serif;
+  color: #b7c5cc;
+
+  font-size: 25px;
+
+  margin: 10px;
+
+  user-select: none;
+}
