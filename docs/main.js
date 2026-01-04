@@ -1,4 +1,10 @@
-import json from './solutions.json' with {type: 'json'}
+let json;
+
+await fetch("./solutions.json")
+    .then((r) => r.json())
+    .then((data) => {
+        json = data;
+    });
 
 let answerBox = document.getElementById("guessinput");
 let guessButton = document.getElementById("guessbutton");
@@ -27,13 +33,23 @@ let responseHistroyArrowRight = document.getElementById("arrowright");
 
 let responseHistoryPanel = document.getElementById("weekresponses");
 let responseHistoryDate = document.getElementById("responsehistorydate");
-let responseHistoryWeeekday = document.querySelectorAll("#dayofweekindicator table tr td");
-let responseHistoryDayResponses = document.querySelectorAll("#weekresponses #dayresponses table tr td");
-let responseHistoryExitButton = document.querySelector("#weekresponses #exitbutton");
+let responseHistoryWeeekday = document.querySelectorAll(
+    "#dayofweekindicator table tr td"
+);
+let responseHistoryDayResponses = document.querySelectorAll(
+    "#weekresponses #dayresponses table tr td"
+);
+let responseHistoryExitButton = document.querySelector(
+    "#weekresponses #exitbutton"
+);
 
-let responseHistoryCalendarButton = document.querySelector("#weekresponses #calendarbutton");
+let responseHistoryCalendarButton = document.querySelector(
+    "#weekresponses #calendarbutton"
+);
 let responseHistoryCalendarPanel = document.getElementById("calendarpopup");
-let responseHistoryCalendarPanelExitButton = document.querySelector("#calendarpopup #exitbutton");
+let responseHistoryCalendarPanelExitButton = document.querySelector(
+    "#calendarpopup #exitbutton"
+);
 
 let repsonseHistoryOpenButton = document.getElementById("seeresponsehistory");
 
@@ -54,11 +70,17 @@ let infoButton = document.getElementById("info");
 let helpButton = document.getElementById("help");
 
 let weekCompleteMenu = document.getElementById("weekcompletemenu");
-let weekCompleteMenuExitButton = document.querySelector("#weekcompletemenu #exitbutton");
+let weekCompleteMenuExitButton = document.querySelector(
+    "#weekcompletemenu #exitbutton"
+);
 
-let weekCompleteShareButton = document.querySelector("#weekcompletemenu .share");
+let weekCompleteShareButton = document.querySelector(
+    "#weekcompletemenu .share"
+);
 
-let calendarPopupSpaces = document.querySelectorAll("#calendarpopup #calendar td");
+let calendarPopupSpaces = document.querySelectorAll(
+    "#calendarpopup #calendar td"
+);
 
 let calendarMonthSelect = document.querySelector("#dateselectbar #month");
 let calendarYearSelect = document.querySelector("#dateselectbar #year");
@@ -66,13 +88,17 @@ let calendarYearSelect = document.querySelector("#dateselectbar #year");
 let calendarDate = document.getElementById("calendardate");
 
 let calendarBackArrow = document.querySelector("#calendarpopup #backarrow");
-let calendarForwardArrow = document.querySelector("#calendarpopup #forwardarrow");
+let calendarForwardArrow = document.querySelector(
+    "#calendarpopup #forwardarrow"
+);
 
 let calendarGraphic = document.getElementById("calendargraphic");
 
 let previousWeekAnswers = document.getElementById("lastweekanswers");
 let previousWeekAnswersOpenButton = document.getElementById("seesolutions");
-let previousWeekAnswersExitButton = document.querySelector("#lastweekanswers #exitbutton");
+let previousWeekAnswersExitButton = document.querySelector(
+    "#lastweekanswers #exitbutton"
+);
 
 let dayIndicator = document.querySelector("#dayindicator h2");
 dayIndicator.innerHTML = dayOfWeek + 1;
@@ -85,22 +111,46 @@ let score = parseInt(localStorage.getItem("score")) || 0;
 let scoreDisplay = document.querySelector("#score h2");
 scoreDisplay.innerHTML = score;
 
-let weekCompleteMenuWordsWillResetText = document.querySelector("#weekcompletemenu #wordswillreset");
+let weekCompleteMenuWordsWillResetText = document.querySelector(
+    "#weekcompletemenu #wordswillreset"
+);
 
-let objectClueMenuLeftArrow = document.querySelector("#objectcluemenu #leftarrow");
-let objectClueMenuRightArrow = document.querySelector("#objectcluemenu #rightarrow");
+let objectClueMenuLeftArrow = document.querySelector(
+    "#objectcluemenu #leftarrow"
+);
+let objectClueMenuRightArrow = document.querySelector(
+    "#objectcluemenu #rightarrow"
+);
 
 let objectClueMenuPageIndex = document.getElementById("clueindex");
+
+let objectClues = document.querySelectorAll(
+    "#completiongrid #difficultybar td"
+);
+let objectClueChecks = document.querySelectorAll(
+    "#completiongrid #completionbar td"
+);
+
+let bonusObjectClues = document.querySelectorAll(
+    "#completiongridbonus #difficultybar td"
+);
+let bonusObjectClueChecks = document.querySelectorAll(
+    "#completiongridbonus #completionbar td"
+);
+
+let completedBeforeToday = true;
+let weekCompleted = false;
 
 async function restoreGuesses() {
     if (guessData == null) {
         guessData = [];
     } else {
         //set guesses to guesses already done today if found
-        let dayGuessData = guessData.find(guessData => guessData.date === todayDate);
+        let dayGuessData = guessData.find(
+            (guessData) => guessData.date === todayDate
+        );
 
         if (dayGuessData != undefined) {
-
             //console.log(dayGuessData.guesses);
             for (let i = 0; i < dayGuessData.guesses.length; i++) {
                 //console.log(dayGuessData.guesses[i]);
@@ -113,24 +163,39 @@ async function restoreGuesses() {
         for (let i = 0; i < dayOfWeek; i++) {
             let dateStr = getDateStr(i + 1, false);
 
-            let dateSaveIndex = guessData.findIndex(guessData => guessData.date == dateStr);
+            let dateSaveIndex = guessData.findIndex(
+                (guessData) => guessData.date == dateStr
+            );
 
             if (dateSaveIndex != -1) {
                 let loadedGuesses = guessData[dateSaveIndex].guesses;
 
                 for (let j = 0; j < loadedGuesses.length; j++) {
                     //console.log(formatAnswer(loadedGuesses[j]));
-                    let loadedGuess = await sha256(formatAnswer(loadedGuesses[j]));
+                    let loadedGuess = await sha256(
+                        formatAnswer(loadedGuesses[j])
+                    );
 
                     let correctId = -1;
                     for (let k = 0; k < 7; k++) {
-                        if (json.weeks[0].solutions[k].solution == loadedGuess) {
+                        if (
+                            json.weeks[0].solutions[k].solution == loadedGuess
+                        ) {
                             correctId = k;
                         }
                     }
 
-                    if (correctId != -1) {
+                    if (
+                        correctId != -1 &&
+                        !objectClueChecks[correctId].classList.contains(
+                            "visible"
+                        )
+                    ) {
                         objectClueChecks[correctId].classList.add("visible");
+
+                        if (i + 1 == dayOfWeek) {
+                            completedBeforeToday = false;
+                        }
                     }
                 }
             }
@@ -142,49 +207,116 @@ document.addEventListener("DOMContentLoaded", () => {
     guessButton.addEventListener("click", guess);
     objectClueMenuExit.addEventListener("click", closeClueMenu);
 
-    objectClueMenuOverlay.addEventListener("click", (e) => { if (e.target == objectClueMenuOverlay) { closeClueMenu(); } });
+    objectClueMenuOverlay.addEventListener("click", (e) => {
+        if (e.target == objectClueMenuOverlay) {
+            closeClueMenu();
+        }
+    });
 
-    responseHistoryArrowLeft.addEventListener("click", () => { stepResponseHistoryDate(-1) });
-    responseHistroyArrowRight.addEventListener("click", () => { stepResponseHistoryDate(1) });
+    responseHistoryArrowLeft.addEventListener("click", () => {
+        stepResponseHistoryDate(-1);
+    });
+    responseHistroyArrowRight.addEventListener("click", () => {
+        stepResponseHistoryDate(1);
+    });
 
-    responseHistoryExitButton.addEventListener("click", () => { responseHistoryPanel.classList.add("hidden"); onMainPage = true; });
-    repsonseHistoryOpenButton.addEventListener("click", () => { onMainPage && responseHistoryPanel.classList.remove("hidden"); onMainPage = false; });
+    responseHistoryExitButton.addEventListener("click", () => {
+        responseHistoryPanel.classList.add("hidden");
+        onMainPage = true;
+    });
+    repsonseHistoryOpenButton.addEventListener("click", () => {
+        onMainPage && responseHistoryPanel.classList.remove("hidden");
+        onMainPage = false;
+    });
 
-    responseHistoryCalendarButton.addEventListener("click", () => { responseHistoryCalendarPanel.classList.add("visible"); buildCalendar(); });
-    responseHistoryCalendarPanelExitButton.addEventListener("click", () => { responseHistoryCalendarPanel.classList.remove("visible") });
+    responseHistoryCalendarButton.addEventListener("click", () => {
+        responseHistoryCalendarPanel.classList.add("visible");
+        buildCalendar();
+    });
+    responseHistoryCalendarPanelExitButton.addEventListener("click", () => {
+        responseHistoryCalendarPanel.classList.remove("visible");
+    });
 
-    countdownMenuExit.addEventListener("click", () => { countdownMenu.classList.remove("visible"); onMainPage = true; });
+    countdownMenuExit.addEventListener("click", () => {
+        countdownMenu.classList.remove("visible");
+        onMainPage = true;
+    });
 
-    infoButton.addEventListener("click", () => { onMainPage && countdownMenu.classList.add("visible"); onMainPage = false; });
+    infoButton.addEventListener("click", () => {
+        onMainPage && countdownMenu.classList.add("visible");
+        onMainPage = false;
+    });
 
-    infoMenuExit.addEventListener("click", () => { infoMenu.classList.remove("visible"); onMainPage = true; });
-    helpButton.addEventListener("click", () => { onMainPage && infoMenu.classList.add("visible"); onMainPage = false; });
+    infoMenuExit.addEventListener("click", () => {
+        infoMenu.classList.remove("visible");
+        onMainPage = true;
+    });
+    helpButton.addEventListener("click", () => {
+        onMainPage && infoMenu.classList.add("visible");
+        onMainPage = false;
+    });
 
-    infoMenuArrow.addEventListener("click", () => { infoMenu.classList.remove("visible"); infoMenuPage2.classList.add("visible"); onMainPage = false; });
-    infoMenuBack.addEventListener("click", () => { infoMenu.classList.add("visible"); infoMenuPage2.classList.remove("visible"); onMainPage = false; });
+    infoMenuArrow.addEventListener("click", () => {
+        infoMenu.classList.remove("visible");
+        infoMenuPage2.classList.add("visible");
+        onMainPage = false;
+    });
+    infoMenuBack.addEventListener("click", () => {
+        infoMenu.classList.add("visible");
+        infoMenuPage2.classList.remove("visible");
+        onMainPage = false;
+    });
 
-    infoMenuPage2Exit.addEventListener("click", () => { infoMenuPage2.classList.remove("visible"); onMainPage = true; });
+    infoMenuPage2Exit.addEventListener("click", () => {
+        infoMenuPage2.classList.remove("visible");
+        onMainPage = true;
+    });
 
-    weekCompleteMenuExitButton.addEventListener("click", () => { weekCompleteMenu.classList.remove("visible") });
+    weekCompleteMenuExitButton.addEventListener("click", () => {
+        weekCompleteMenu.classList.remove("visible");
+    });
 
-    weekCompleteShareButton.addEventListener("click", () => { share(true) });
+    weekCompleteShareButton.addEventListener("click", () => {
+        share(true);
+    });
 
-    countdownMenuShareButton.addEventListener("click", () => { share(true) });
+    countdownMenuShareButton.addEventListener("click", () => {
+        share(true);
+    });
 
-    calendarMonthSelect.addEventListener("change", () => { selectedMonth = calendarMonthSelect.selectedIndex; buildCalendar(true) });
-    calendarYearSelect.addEventListener("change", () => { selectedYear = calendarYearSelect.selectedIndex + 2025; buildCalendar(true) });
+    calendarMonthSelect.addEventListener("change", () => {
+        selectedMonth = calendarMonthSelect.selectedIndex;
+        buildCalendar(true);
+    });
+    calendarYearSelect.addEventListener("change", () => {
+        selectedYear = calendarYearSelect.selectedIndex + 2025;
+        buildCalendar(true);
+    });
 
-    calendarBackArrow.addEventListener("click", () => { selectedMonth--; buildCalendar(true); });
-    calendarForwardArrow.addEventListener("click", () => { selectedMonth++; buildCalendar(true); });
+    calendarBackArrow.addEventListener("click", () => {
+        selectedMonth--;
+        buildCalendar(true);
+    });
+    calendarForwardArrow.addEventListener("click", () => {
+        selectedMonth++;
+        buildCalendar(true);
+    });
 
-    calendarPopupSpaces.forEach((square, i) => { square.addEventListener("click", () => { calendarSpaceClicked(i) }); });
+    calendarPopupSpaces.forEach((square, i) => {
+        square.addEventListener("click", () => {
+            calendarSpaceClicked(i);
+        });
+    });
 
     objectClueMenuLeftArrow.addEventListener("click", () => {
         let currentCategory = objectClueMenuCategory.innerHTML;
 
         let currentIndex = -1;
         for (let i = 0; i < 7; i++) {
-            if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+            if (
+                json.weeks[activeSolutionId].solutions[i].category ==
+                currentCategory
+            ) {
                 currentIndex = i;
             }
         }
@@ -194,9 +326,9 @@ document.addEventListener("DOMContentLoaded", () => {
             newIndex = 6;
         }
 
-        if(!onMainPage){
+        if (!onMainPage) {
             openClueMenu(newIndex);
-        }else{
+        } else {
             openClueMenu(0);
         }
     });
@@ -206,7 +338,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let currentIndex = -1;
         for (let i = 0; i < 7; i++) {
-            if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+            if (
+                json.weeks[activeSolutionId].solutions[i].category ==
+                currentCategory
+            ) {
                 currentIndex = i;
             }
         }
@@ -216,15 +351,18 @@ document.addEventListener("DOMContentLoaded", () => {
             newIndex = 0;
         }
 
-        if(!onMainPage){
+        if (!onMainPage) {
             openClueMenu(newIndex);
-        }else{
+        } else {
             openClueMenu(0);
         }
     });
 
     //previousWeekAnswersOpenButton.addEventListener("click", () => { previousWeekAnswers.classList.add("visible"); onMainPage = false });
-    previousWeekAnswersExitButton.addEventListener("click", () => { previousWeekAnswers.classList.remove("visible"); onMainPage = true });
+    previousWeekAnswersExitButton.addEventListener("click", () => {
+        previousWeekAnswers.classList.remove("visible");
+        onMainPage = true;
+    });
 
     document.addEventListener("keydown", function (event) {
         if (event.key === "1") {
@@ -253,12 +391,15 @@ document.addEventListener("DOMContentLoaded", () => {
             closeClueMenu();
         }
 
-        if(event.key == "ArrowLeft"){
+        if (event.key == "ArrowLeft") {
             let currentCategory = objectClueMenuCategory.innerHTML;
 
             let currentIndex = -1;
             for (let i = 0; i < 7; i++) {
-                if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                if (
+                    json.weeks[activeSolutionId].solutions[i].category ==
+                    currentCategory
+                ) {
                     currentIndex = i;
                 }
             }
@@ -271,12 +412,15 @@ document.addEventListener("DOMContentLoaded", () => {
             openClueMenu(newIndex);
         }
 
-        if(event.key == "ArrowRight"){
+        if (event.key == "ArrowRight") {
             let currentCategory = objectClueMenuCategory.innerHTML;
 
             let currentIndex = -1;
             for (let i = 0; i < 7; i++) {
-                if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                if (
+                    json.weeks[activeSolutionId].solutions[i].category ==
+                    currentCategory
+                ) {
                     currentIndex = i;
                 }
             }
@@ -289,7 +433,6 @@ document.addEventListener("DOMContentLoaded", () => {
             openClueMenu(newIndex);
         }
     });
-
 });
 
 answerBox.addEventListener("keydown", (event) => {
@@ -299,19 +442,33 @@ answerBox.addEventListener("keydown", (event) => {
     }
 });
 
-//setup difficulty color
-let objectClues = document.querySelectorAll("#completiongrid #difficultybar td");
-let objectClueChecks = document.querySelectorAll("#completiongrid #completionbar td");
+//start();
 
+//console.log(weekCompleted, completedBeforeToday);
+
+//setup difficulty color
 let difficultyColors = ["#00ff0055", "#ffff0055", "#ff000055", "#ff00ff55"];
 
+//default
 for (let i = 0; i < 7; i++) {
-    objectClues[i].style.backgroundColor = difficultyColors[json.weeks[activeSolutionId].solutions[i].difficulty];
+    objectClues[i].style.backgroundColor =
+        difficultyColors[json.weeks[activeSolutionId].solutions[i].difficulty];
 }
 
 objectClues.forEach((objectClue, index) => {
     document.addEventListener("DOMContentLoaded", () => {
         objectClue.addEventListener("click", () => openClueMenu(index));
+    });
+});
+
+//bonus
+for (let i = 0; i < 2; i++) {
+    bonusObjectClues[i].style.backgroundColor = "#0000ff55";
+}
+
+bonusObjectClues.forEach((objectClue, index) => {
+    document.addEventListener("DOMContentLoaded", () => {
+        objectClue.addEventListener("click", () => openClueMenu(index, true));
     });
 });
 
@@ -341,11 +498,15 @@ async function guess() {
         }
     }
 
-    if (correctId != -1 && !objectClueChecks[correctId].classList.contains("visible") && dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099") {
+    if (
+        correctId != -1 &&
+        !objectClueChecks[correctId].classList.contains("visible") &&
+        dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099"
+    ) {
         dayGuessCells[totalGuessesToday].style.backgroundColor = "#00ff0099";
         objectClueChecks[correctId].classList.add("visible");
 
-        if(setupComplete){
+        if (setupComplete) {
             let totalWords = parseInt(localStorage.getItem("totalwords")) || 0;
 
             totalWords++;
@@ -354,7 +515,13 @@ async function guess() {
 
             guessCorrect = true;
 
-            score += 5 * (parseInt(json.weeks[activeSolutionId].solutions[correctId].difficulty) + 1) * (7 - dayOfWeek);
+            score +=
+                5 *
+                (parseInt(
+                    json.weeks[activeSolutionId].solutions[correctId].difficulty
+                ) +
+                    1) *
+                (7 - dayOfWeek);
             updateScoreDisplay();
         }
 
@@ -368,7 +535,7 @@ async function guess() {
 
     dayGuesses.push(answerBox.value);
 
-    let index = guessData.findIndex(guessData => guessData.date == todayDate);
+    let index = guessData.findIndex((guessData) => guessData.date == todayDate);
 
     if (setupComplete) {
         if (index == -1) {
@@ -386,7 +553,7 @@ async function guess() {
         localStorage.setItem("totalguesses", totalGuesses);
         document.getElementById("guessesstat").innerHTML = totalGuesses;
 
-        if(!guessCorrect){
+        if (!guessCorrect) {
             score++;
             updateScoreDisplay();
         }
@@ -429,9 +596,11 @@ function sha256(message) {
 }
 
 let objectClueMenuCategory = document.getElementById("category");
-let objectClueTable = document.querySelectorAll("#objectcluemenu > table tr td");
+let objectClueTable = document.querySelectorAll(
+    "#objectcluemenu > table tr td"
+);
 
-function openClueMenu(itemIndex) {
+function openClueMenu(itemIndex, isBonus = false) {
     if (!onMainPage && !objectClueMenu.classList.contains("visible")) {
         return;
     }
@@ -440,14 +609,20 @@ function openClueMenu(itemIndex) {
 
     onMainPage = false;
 
-    objectClueMenuCategory.innerHTML = json.weeks[activeSolutionId].solutions[itemIndex].category;
+    objectClueMenuCategory.innerHTML =
+        json.weeks[activeSolutionId].solutions[itemIndex].category;
 
     for (let i = 0; i < 7; i++) {
         if (i <= dayOfWeek) {
-            objectClueTable[i].innerHTML = json.weeks[activeSolutionId].hint[itemIndex].hints[i];
+            objectClueTable[i].innerHTML =
+                json.weeks[activeSolutionId].hint[itemIndex].hints[i];
         } else {
             //fill with date of reveal
-            objectClueTable[i].innerHTML = getDateStr(getWeekday() - i, true, false);
+            objectClueTable[i].innerHTML = getDateStr(
+                getWeekday() - i,
+                true,
+                false
+            );
         }
     }
 
@@ -476,15 +651,15 @@ setInterval(() => {
 
 function updateCountdown() {
     let now = new Date();
-    let tomorrow = new Date(now) // est offset
+    let tomorrow = new Date(now); // est offset
     tomorrow.setHours(24, 0, 0, 0);
 
     let diff = Math.floor((tomorrow - now) / 1000);
     //console.log(diff)
 
     let hours = Math.floor(diff / 3600);
-    let minutes = Math.floor((diff - (hours * 3600)) / 60);
-    let seconds = Math.floor((diff - hours * 3600 - minutes * 60));
+    let minutes = Math.floor((diff - hours * 3600) / 60);
+    let seconds = Math.floor(diff - hours * 3600 - minutes * 60);
 
     hours = hours.toString();
     minutes = minutes.toString();
@@ -515,15 +690,28 @@ function getDateStr(dayOffset = 0, display = false, showYear = true) {
 
     if (!display) {
         if (showYear) {
-            return date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+            return (
+                date.getFullYear() +
+                "/" +
+                (date.getMonth() + 1) +
+                "/" +
+                date.getDate()
+            );
         } else {
-            return (date.getMonth() + 1) + "/" + date.getDate();
+            return date.getMonth() + 1 + "/" + date.getDate();
         }
     } else {
         if (showYear) {
-            return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+            return (
+                date.getMonth() +
+                1 +
+                "/" +
+                date.getDate() +
+                "/" +
+                date.getFullYear()
+            );
         } else {
-            return (date.getMonth() + 1) + "/" + date.getDate();
+            return date.getMonth() + 1 + "/" + date.getDate();
         }
     }
 }
@@ -552,7 +740,9 @@ async function stepResponseHistoryDate(val) {
 
     responseHistoryWeeekday[getWeekday(displayDate)].classList.add("active");
 
-    let histDayData = guessData.find(guessData => guessData.date === getDateStr(displayDate, false));
+    let histDayData = guessData.find(
+        (guessData) => guessData.date === getDateStr(displayDate, false)
+    );
 
     if (histDayData != undefined) {
         //fill table with the responses from that day
@@ -590,20 +780,23 @@ async function definiteResponseHistoryDate(val) {
     stepResponseHistoryDate(val + displayDate);
 }
 
-async function share(shareWeek = false) { //shares just today if false
+async function share(shareWeek = false) {
+    //shares just today if false
     let output = "WeekWord " + getDateStr() + "\n";
 
     //word completion
-    for(let i = 0; i < 7; i++){
-        let difficultyVal = parseInt(json.weeks[activeSolutionId].solutions[i].difficulty);
+    for (let i = 0; i < 7; i++) {
+        let difficultyVal = parseInt(
+            json.weeks[activeSolutionId].solutions[i].difficulty
+        );
 
-        if(difficultyVal == 0){
+        if (difficultyVal == 0) {
             output += "🟩";
-        }else if(difficultyVal == 1){
+        } else if (difficultyVal == 1) {
             output += "🟨";
-        }else if(difficultyVal == 2){
+        } else if (difficultyVal == 2) {
             output += "🟥";
-        }else{
+        } else {
             output += "🟪";
         }
     }
@@ -634,11 +827,14 @@ async function share(shareWeek = false) { //shares just today if false
 
     let usedWords = [];
 
-    for(let i = 0; i < 5; i++){
-        for(let j = 0; j <= dayOfWeek; j++){
-            let histDayData = guessData.find(guessData => guessData.date === getDateStr(dayOfWeek - j, false));
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j <= dayOfWeek; j++) {
+            let histDayData = guessData.find(
+                (guessData) =>
+                    guessData.date === getDateStr(dayOfWeek - j, false)
+            );
 
-            if(histDayData != undefined && histDayData.guesses.length > i){
+            if (histDayData != undefined && histDayData.guesses.length > i) {
                 let histAnswer = formatAnswer(histDayData.guesses[i]);
 
                 histAnswer = await sha256(histAnswer);
@@ -656,7 +852,7 @@ async function share(shareWeek = false) { //shares just today if false
                 } else {
                     output += "⬜";
                 }
-            }else{
+            } else {
                 output += "⬛";
             }
         }
@@ -668,11 +864,12 @@ async function share(shareWeek = false) { //shares just today if false
 
     if (navigator.share && isMobile()) {
         navigator.share({
-            text: output
+            text: output,
         });
     } else {
         if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(output)
+            navigator.clipboard
+                .writeText(output)
                 .then(() => copyToClipboardNotice())
                 .catch(() => legacyCopy(output));
         } else {
@@ -697,7 +894,8 @@ function legacyCopy(text) {
 let selectedMonth = new Date().getMonth();
 let selectedYear = new Date().getFullYear();
 
-function buildCalendar(isCallback = false) { //what the fuck
+function buildCalendar(isCallback = false) {
+    //what the fuck
     if (!isCallback) {
         calendarMonthSelect.selectedIndex = selectedMonth;
         calendarYearSelect.selectedIndex = selectedYear - 2025;
@@ -753,9 +951,13 @@ function buildCalendar(isCallback = false) { //what the fuck
                 calendarPopupSpaces[i].classList.remove("today");
             }
 
-            let dateOffset = Math.round((transformDate - new Date()) / (1000 * 60 * 60 * 24));
+            let dateOffset = Math.round(
+                (transformDate - new Date()) / (1000 * 60 * 60 * 24)
+            );
 
-            let calendarDayData = guessData.find(guessData => guessData.date === getDateStr(-dateOffset, false));
+            let calendarDayData = guessData.find(
+                (guessData) => guessData.date === getDateStr(-dateOffset, false)
+            );
 
             //console.log(dateOffset);
 
@@ -773,7 +975,8 @@ function buildCalendar(isCallback = false) { //what the fuck
         }
     }
 
-    calendarDate.innerHTML = calendarMonthSelect[selectedMonth].text + " " + selectedYear;
+    calendarDate.innerHTML =
+        calendarMonthSelect[selectedMonth].text + " " + selectedYear;
 }
 
 function calendarSpaceClicked(index) {
@@ -811,6 +1014,10 @@ function start() {
     }
 
     if (allComplete) {
+        weekCompleted = true;
+    }
+
+    if (allComplete && !completedBeforeToday) {
         weekCompleteMenu.classList.add("visible");
     }
 
@@ -832,18 +1039,18 @@ function start() {
     let streak = parseInt(localStorage.getItem("daystreak")) || 1;
     let lastDateStr = localStorage.getItem("lastdate") || null;
 
-    if(getDateStr(0,false) == lastDateStr){
+    if (getDateStr(0, false) == lastDateStr) {
         //same day, do nothing
-    }else if(getDateStr(1,false) == lastDateStr){
+    } else if (getDateStr(1, false) == lastDateStr) {
         //next day, increase streak
         streak++;
         localStorage.setItem("daystreak", streak);
-        localStorage.setItem("lastdate", getDateStr(0,false));
-    }else{
+        localStorage.setItem("lastdate", getDateStr(0, false));
+    } else {
         //missed day, reset streak
         streak = 1;
         localStorage.setItem("daystreak", streak);
-        localStorage.setItem("lastdate", getDateStr(0,false));
+        localStorage.setItem("lastdate", getDateStr(0, false));
     }
 
     document.getElementById("daystreakstat").innerHTML = streak;
@@ -858,13 +1065,18 @@ function start() {
     updateWeekCompletionPercentageStat();
 
     //update week completion with correct information
-    weekCompleteMenuWordsWillResetText.innerHTML = "Words will reset on Sunday, " + getDateStr(1 - dayOfWeek, true, false);
+    weekCompleteMenuWordsWillResetText.innerHTML =
+        "Words will reset on Sunday, " + getDateStr(1 - dayOfWeek, true, false);
+
+    //bonus setup
+    if (allComplete && !completedBeforeToday) {
+    }
 }
 
-function updateWeekCompletionPercentageStat(){
+function updateWeekCompletionPercentageStat() {
     let totalCompleted = 0;
-    for(let i = 0; i < 7; i++){
-        if(objectClueChecks[i].classList.contains("visible")){
+    for (let i = 0; i < 7; i++) {
+        if (objectClueChecks[i].classList.contains("visible")) {
             totalCompleted++;
         }
     }
@@ -875,16 +1087,18 @@ function updateWeekCompletionPercentageStat(){
 }
 
 function isMobile() {
-    return navigator.userAgentData?.mobile ||
-           /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    return (
+        navigator.userAgentData?.mobile ||
+        /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+    );
 }
 
-function updateScoreDisplay(){
+function updateScoreDisplay() {
     scoreDisplay.innerHTML = score;
     localStorage.setItem("score", score);
 }
 
-function copyToClipboardNotice(){
+function copyToClipboardNotice() {
     let notice = document.getElementById("copiedtoclipboardnotice");
 
     notice.classList.add("visible");
