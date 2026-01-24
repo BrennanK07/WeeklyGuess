@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
 
 html {
-  background-color: #131516;
+    background-color: #131516;
 }
 
 #pagesquasher {
@@ -17,42 +17,43 @@ html {
 }
 
 #guessbar > div {
-  display: flex;
+    display: flex;
 
-  justify-content: center;
+    justify-content: center;
 }
 
 #guessbar > div > div {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 #guessbar > div > input {
-  height: 50px;
-  width: 500px;
+    height: 50px;
+    width: 500px;
 
-  background-color: #00000000;
-  color: #b7c5cc;
+    background-color: #00000000;
+    color: #b7c5cc;
 
-  border: 2px solid #303436;
-  border-radius: 0px;
+    border: 2px solid #303436;
+    border-radius: 0px;
 
-  font-size: 35px;
+    font-size: 35px;
 
-  /*box-shadow: 0px 0px 5px #ddd;*/
+    /*box-shadow: 0px 0px 5px #ddd;*/
 
-  font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
+    font-family: "Lexend Deca", Arial, Helvetica, sans-serif;
 
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 #guessbar > div > input:focus {
-  outline: none;
-  box-shadow: none;
-  border-color: #303436; /* keep your same border */
+    outline: none;
+    box-shadow: none;
+    border-color: #303436; /* keep your same border */
 }
 
 #guessbar button,
+<<<<<<< HEAD
 #seeresponsehistory {
   box-sizing: content-box;
   height: 50px;
@@ -61,26 +62,35 @@ html {
   margin-left: 10px;
 
   background-color: #00000000;
+=======
+#seesolutions {
+    box-sizing: content-box;
+    height: 50px;
+    width: 200px;
 
-  border: 2px solid #303436;
-  border-radius: 0px;
+    background-color: #00000000;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  font-size: 25px;
+    border: 2px solid #303436;
+    border-radius: 0px;
 
-  padding: 1px;
+    font-size: 25px;
 
-  /*box-shadow: 0px 0px 5px #ddd;*/
+    padding: 1px;
 
-  color: #b7c5cc;
+    /*box-shadow: 0px 0px 5px #ddd;*/
 
-  font-family: "Lexend Deca";
+    color: #b7c5cc;
 
-  transition: background-color 0.4s;
+    font-family: "Lexend Deca";
 
-  border-collapse: collapse;
+    transition: background-color 0.4s;
+
+    border-collapse: collapse;
 }
 
 #guessbar #seeresponsehistory {
+<<<<<<< HEAD
   font-size: 15px;
 
   margin-top: 5px;
@@ -95,25 +105,40 @@ html {
 #guessbar button:hover,
 #seesolutions:hover {
   background-color: #333;
+=======
+    font-size: 15px;
+}
 
-  transition: background-color 0.2s;
+#seesolutions {
+    font-size: 15px;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
+
+    padding: 0px;
+}
+
+#guessbar button:hover,
+#seesolutions:hover {
+    background-color: #333;
+
+    transition: background-color 0.2s;
 }
 
 #completionbar > td img {
-  opacity: 0%;
+    opacity: 0%;
 
-  transition: opacity 0.2s;
+    transition: opacity 0.2s;
 }
 
 #completionbar > td.visible img {
-  opacity: 100%;
-  animation: bounce 0.2s ease;
+    opacity: 100%;
+    animation: bounce 0.2s ease;
 
-  transition: opacity 0.2s;
+    transition: opacity 0.2s;
 }
 
 #completiongrid.hidden,
 #completiongridbonus.hidden {
+<<<<<<< HEAD
   visibility: hidden;
   display: none;
 }
@@ -142,125 +167,180 @@ html {
 #completiongrid,
 #completiongridbonus {
   display: flex;
+=======
+    visibility: hidden;
+    display: none;
+}
 
-  justify-content: center;
+#completiongrid > table td,
+#completiongridbonus > table td {
+    border: 2px solid #303436;
+    width: 50px;
+    height: 50px;
 
-  padding-bottom: 50px;
+    text-align: center;
+
+    color: #b7c5cc;
+
+    font-family: "Lexend Deca";
+    font-size: 20px;
+
+    user-select: none;
+}
+
+#completiongrid > table,
+#completiongridbonus > table {
+    border-collapse: collapse;
+}
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
+
+#completiongrid,
+#completiongridbonus {
+    display: flex;
+
+    justify-content: center;
+
+    padding-bottom: 50px;
 }
 
 td > image {
-  margin: 0px;
+    margin: 0px;
 }
 
 #dayguesses > table td {
+<<<<<<< HEAD
   border: 2px solid #303436;
   width: 90%;
   height: 50px;
+=======
+    border: 2px solid #303436;
+    width: 90vw;
+    height: 50px;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  font-family: "Lexend Deca";
-  font-size: 25px;
+    font-family: "Lexend Deca";
+    font-size: 25px;
 }
 
 #dayguesses > table td.filled {
-  animation: bounce 0.1s ease-in-out;
+    animation: bounce 0.1s ease-in-out;
 }
 
 @keyframes bounce {
-  0% {
-    transform: scale(0.5);
-  }
+    0% {
+        transform: scale(0.5);
+    }
 
-  70% {
-    transform: scale(1.1);
-  }
+    70% {
+        transform: scale(1.1);
+    }
 
+<<<<<<< HEAD
   100% {
     transform: scale(1);
   }
+=======
+    100% {
+        transform: scale(1);
+    }
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #dayguesses > table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 
-  table-layout: fixed;
-  width: 85%;
-  word-wrap: break-word;
-  word-break: break-word;
-  white-space: normal;
+    table-layout: fixed;
+    width: 85%;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
 }
 
 #dayguesses {
-  display: flex;
+    display: flex;
 
-  justify-content: center;
+    justify-content: center;
 
-  padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 #objectcluemenu {
-  position: fixed;
+    position: fixed;
 
+<<<<<<< HEAD
   width: 70%;
   height: 60%;
+=======
+    width: 70vw;
+    height: 60vh;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  left: 50%;
-  top: 50%;
+    left: 50%;
+    top: 50%;
 
-  transform: translate(-50%, -47.5%);
+    transform: translate(-50%, -47.5%);
 
-  visibility: visible;
+    visibility: visible;
 
-  background-color: #181a1b;
-  border: 2px solid #555c5f;
-  box-shadow: 0px 0px 3px #555c5f;
+    background-color: #181a1b;
+    border: 2px solid #555c5f;
+    box-shadow: 0px 0px 3px #555c5f;
 
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 
-  padding-bottom: 50px;
-  padding-top: 70px;
+    padding-bottom: 50px;
+    padding-top: 70px;
 
-  opacity: 0%;
+    opacity: 0%;
 
-  visibility: hidden;
+    visibility: hidden;
 
+<<<<<<< HEAD
   transition:
     opacity 0.2s,
     transform 0.3s,
     visibility 0.2s step-end;
+=======
+    transition: opacity 0.2s, transform 0.3s, visibility 0.2s step-end;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #objectcluemenu.visible {
-  opacity: 100%;
+    opacity: 100%;
 
-  visibility: visible;
+    visibility: visible;
 
-  transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
+<<<<<<< HEAD
   transition:
     opacity 0.2s,
     transform 0.3s;
+=======
+    transition: opacity 0.2s, transform 0.3s;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #objectcluemenu > table > tr > td {
-  color: #b7c5cc;
+    color: #b7c5cc;
 }
 
 #objectcluemenu > table td {
-  border: 2px solid #303436;
-  width: 90%;
-  height: 50px;
+    border: 2px solid #303436;
+    width: 90%;
+    height: 50px;
 
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  font-family: "Lexend Deca";
-  font-size: 25px;
+    font-family: "Lexend Deca";
+    font-size: 25px;
 }
 
 #objectcluemenu > table td.hidden {
@@ -268,8 +348,9 @@ td > image {
 }
 
 #objectcluemenu > table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 
+<<<<<<< HEAD
   table-layout: fixed;
   width: 85%;
   word-wrap: break-word;
@@ -277,44 +358,53 @@ td > image {
   white-space: normal;
 
   margin-bottom: 30px;
+=======
+    table-layout: fixed;
+    width: 85%;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+
+    margin-bottom: 30px;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #objectcluemenu > div {
-  position: fixed;
-  top: 1%;
-  right: 1%;
+    position: fixed;
+    top: 1%;
+    right: 1%;
 
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 #objectcluemenu > div:hover {
-  transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
 
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 #objectClueMenuExit {
-  user-select: none;
-  -webkit-user-drag: none;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-drag: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .lexend-deca-textfont {
-  font-family: "Lexend Deca", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: medium;
-  font-style: normal;
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: medium;
+    font-style: normal;
 }
 
 #category {
-  position: fixed;
-  top: -1%;
-  left: 5%;
+    position: fixed;
+    top: -1%;
+    left: 5%;
 
-  font-family: "Lexend Deca";
+    font-family: "Lexend Deca";
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 }
 
 #countdownmenu,
@@ -323,87 +413,96 @@ td > image {
 #infomenupage2,
 #calendarpopup,
 #lastweekanswers {
-  position: fixed;
+    position: fixed;
 
+<<<<<<< HEAD
   width: 70%;
   height: 50%;
   max-height: 750px;
+=======
+    width: 70vw;
+    height: 60vh;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  left: 50%;
-  top: 50%;
+    left: 50%;
+    top: 50%;
 
-  transform: translate(-50%, -47.5%);
+    transform: translate(-50%, -47.5%);
 
-  visibility: visible;
+    visibility: visible;
 
-  background-color: #181a1b;
-  border: 2px solid #555c5f;
-  box-shadow: 0px 0px 3px #555c5f;
+    background-color: #181a1b;
+    border: 2px solid #555c5f;
+    box-shadow: 0px 0px 3px #555c5f;
 
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 
-  padding-bottom: 50px;
-  padding-top: 70px;
+    padding-bottom: 50px;
+    padding-top: 70px;
 
-  opacity: 0%;
+    opacity: 0%;
 
-  visibility: hidden;
+    visibility: hidden;
 
+<<<<<<< HEAD
   transition:
     opacity 0.2s,
     transform 0.3s,
     visibility 0.2s step-end;
+=======
+    transition: opacity 0.2s, transform 0.3s, visibility step-end;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #calendarpopup #calendar table {
-  width: 80%;
+    width: 80%;
 
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  font-family: "Lexend Deca";
-  font-size: 15px;
+    font-family: "Lexend Deca";
+    font-size: 15px;
 
-  border-collapse: collapse;
+    border-collapse: collapse;
 
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #calendarpopup #calendar table td {
-  flex: 1;
-  aspect-ratio: 1/1;
+    flex: 1;
+    aspect-ratio: 1/1;
 
-  border: 2px solid #303436;
-  height: 50px;
-  width: 50px;
+    border: 2px solid #303436;
+    height: 50px;
+    width: 50px;
 
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  font-family: "Lexend Deca";
-  font-size: 20px;
+    font-family: "Lexend Deca";
+    font-size: 20px;
 
-  transition: background-color 0.1s ease;
+    transition: background-color 0.1s ease;
 }
 
 #calendarpopup #calendar table td.hidden {
-  border: 0px;
+    border: 0px;
 }
 
 #calendarpopup #calendar table td.data {
-  background-color: #00ff0099;
+    background-color: #00ff0099;
 
-  transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
 }
 
 #calendarpopup #calendar table td.today {
-  background-color: #aa0000ee;
+    background-color: #aa0000ee;
 
-  transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
 }
 
 #countdownmenu.visible,
@@ -412,8 +511,9 @@ td > image {
 #infomenupage2.visible,
 #calendarpopup.visible,
 #lastweekanswers.visible {
-  opacity: 100%;
+    opacity: 100%;
 
+<<<<<<< HEAD
   visibility: visible;
 
   transform: translate(-50%, -50%);
@@ -421,6 +521,13 @@ td > image {
   transition:
     opacity 0.2s,
     transform 0.3s;
+=======
+    transform: translate(-50%, -50%);
+
+    visibility: visible;
+
+    transition: opacity 0.2s, transform 0.3s, visibility step-start;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #countdownmenu > div,
@@ -428,13 +535,17 @@ td > image {
 #weekcompletemenu > div,
 #infomenupage2 > div,
 #lastweekanswers > div {
+<<<<<<< HEAD
   width: 90%;
   height: 90%;
+=======
+    width: 90%;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 #countdownmenu h1,
@@ -442,21 +553,34 @@ td > image {
 #weekcompletemenu h1,
 #infomenupage2 h1,
 #lastweekanswers h1 {
-  font-family: "Lexend Deca", monospace;
-  color: white;
+    font-family: "Lexend Deca", monospace;
+    color: white;
 
+<<<<<<< HEAD
   font-size: 25px;
   font-weight: 500;
+=======
+    font-size: 50px;
+    font-weight: 500;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums;
 
-  text-align: center;
+    text-align: center;
 
+<<<<<<< HEAD
   margin: 0%;
 }
 
 #infomenu h1 {
   font-size: 35px;
+=======
+    margin: 0vw;
+}
+
+#infomenu h1 {
+    font-size: 50px;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #countdownmenu h2,
@@ -465,9 +589,10 @@ td > image {
 #infomenupage2 h2,
 #calendarpopup h2,
 #lastweekanswers h2 {
-  font-family: "Lexend Deca", monospace;
-  color: rgb(196, 196, 196);
+    font-family: "Lexend Deca", monospace;
+    color: rgb(196, 196, 196);
 
+<<<<<<< HEAD
   font-size: 15px;
   font-weight: 200;
 
@@ -484,45 +609,84 @@ td > image {
 
   font-size: 25px;
   font-weight: 400;
+=======
+    font-size: 25px;
+    font-weight: 400;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums;
 
-  text-align: center;
+    text-align: center;
 
+<<<<<<< HEAD
   margin: 0%;
+=======
+    margin: 0vw;
+}
+
+#weekcompletemenu p {
+    font-family: "Lexend Deca", monospace;
+    color: rgb(196, 196, 196);
+
+    font-size: 25px;
+    font-weight: 400;
+
+    font-variant-numeric: tabular-nums;
+
+    text-align: center;
+
+    margin: 0vw;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #infomenu h2,
 #infomenupage2 h2 {
+<<<<<<< HEAD
   font-size: 20px;
+=======
+    font-size: 25px;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #infomenu p,
 #weekcompletemenu p,
 #infomenupage2 p {
-  font-family: "Lexend Deca", monospace;
-  color: white;
+    font-family: "Lexend Deca", monospace;
+    color: white;
 
+<<<<<<< HEAD
   font-size: 15px;
   font-weight: 500;
+=======
+    font-size: 1vw;
+    font-weight: 500;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums;
 
-  text-align: center;
+    text-align: center;
 
+<<<<<<< HEAD
   margin: 0%;
+=======
+    margin: 0vw;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #clicknumbersforclues {
-  margin-top: auto;
+    margin-top: auto;
 
-  width: min(60%, 500px);
+    width: min(60%, 500px);
 }
 
 #countdownmenu #countdown {
-  margin: 5px;
+    margin: 5px;
 
+<<<<<<< HEAD
   font-size: 75px;
+=======
+    font-size: 10vw;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #countdownmenu #exitbutton,
@@ -530,194 +694,245 @@ td > image {
 #weekcompletemenu #exitbutton,
 #infomenupage2 #exitbutton,
 #lastweekanswers #exitbutton {
-  position: fixed;
+    position: fixed;
 
-  right: 2%;
-  top: 2%;
+    right: 2%;
+    top: 2%;
 
-  transition: transform 0.1s ease;
+    transition: transform 0.1s ease;
 }
 
 #countdownmenu #exitbutton:hover,
 #infomenu #exitbutton:hover,
 #weekcompletemenu #exitbutton:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 
-  transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 #infomenu #nextpagebutton {
-  width: 50px;
+    width: 50px;
 
-  position: fixed;
+    position: fixed;
 
-  bottom: 30px;
-  right: 30px;
+    bottom: 30px;
+    right: 30px;
 
-  transition: transform ease-in-out 0.2s;
+    transition: transform ease-in-out 0.2s;
 }
 
 #infomenupage2 #prevpagebutton {
-  width: 50px;
+    width: 50px;
 
-  position: fixed;
+    position: fixed;
 
-  bottom: 30px;
-  left: 30px;
+    bottom: 30px;
+    left: 30px;
 
-  transition: transform ease-in-out 0.2s;
+    transition: transform ease-in-out 0.2s;
 }
 
 #infomenupage2 #prevpagebutton:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 
-  transition: transform ease-in-out 0.2s;
+    transition: transform ease-in-out 0.2s;
 }
 
 #infomenu #nextpagebutton:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 
-  transition: transform ease-in-out 0.2s;
+    transition: transform ease-in-out 0.2s;
 }
 
 #weekresponses {
-  position: fixed;
+    position: fixed;
 
+<<<<<<< HEAD
   width: 70%;
   left: 50%;
   top: 50%;
+=======
+    width: 70vw;
+    left: 50%;
+    top: 50%;
 
-  transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  visibility: visible;
+    visibility: visible;
 
-  background-color: #181a1b;
-  border: 2px solid #555c5f;
-  box-shadow: 0px 0px 3px #555c5f;
+    background-color: #181a1b;
+    border: 2px solid #555c5f;
+    box-shadow: 0px 0px 3px #555c5f;
 
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 
-  padding-bottom: 20px;
-  padding-top: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 
-  opacity: 100%;
+    opacity: 100%;
 
+    visibility: visible;
+
+<<<<<<< HEAD
   visibility: visible;
 
   transition:
     opacity 0.2s,
     transform 0.3s,
     visibility 0.2s step-start;
+=======
+    transition: opacity 0.2s, transform 0.3s, visibility 0.2s step-start;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #weekresponses.hidden {
-  opacity: 0%;
+    opacity: 0%;
 
-  transform: translate(-50%, -47.5%);
+    transform: translate(-50%, -47.5%);
 
-  visibility: hidden;
+    visibility: hidden;
 
+<<<<<<< HEAD
   transition:
     opacity 0.2s,
     transform 0.3s,
     visibility 0.2s step-end;
+=======
+    transition: opacity 0.2s, transform 0.3s, visibility 0.2s step-end;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 }
 
 #weekresponses > div {
-  height: 100%;
-  width: 90%;
+    height: 100%;
+    width: 90%;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #weekresponses h1 {
-  font-family: "Lexend Deca", monospace;
-  color: white;
+    font-family: "Lexend Deca", monospace;
+    color: white;
 
-  font-size: 35px;
-  font-weight: 500;
+    font-size: 35px;
+    font-weight: 500;
 
-  user-select: none;
+    user-select: none;
 }
 
 #weekresponses > div > h1 {
-  font-family: "Lexend Deca", monospace;
-  color: white;
+    font-family: "Lexend Deca", monospace;
+    color: white;
 
-  font-size: 35px;
-  font-weight: 500;
+    font-size: 35px;
+    font-weight: 500;
 
-  text-align: center;
+    text-align: center;
 }
 
 #weekresponses #dateselectbar {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 #weekresponses #dateselectbar img {
-  margin: 20px;
+    margin: 20px;
 
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 #weekresponses #dateselectbar #arrowright:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 #weekresponses #dateselectbar #arrowleft {
-  transform: scaleX(-1);
+    transform: scaleX(-1);
 
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 #weekresponses #dateselectbar #arrowleft:hover {
-  transform: scaleX(-1) scale(1.2);
+    transform: scaleX(-1) scale(1.2);
 
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 #weekresponses #dayofweekindicator table {
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  font-family: "Lexend Deca";
-  font-size: 15px;
+    font-family: "Lexend Deca";
+    font-size: 15px;
 
-  border-collapse: collapse;
+    border-collapse: collapse;
 
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #weekresponses #dayofweekindicator table td {
-  flex: 1;
-  aspect-ratio: 1/1;
+    flex: 1;
+    aspect-ratio: 1/1;
 
-  border: 2px solid #303436;
-  height: 50px;
-  width: 50px;
+    border: 2px solid #303436;
+    height: 50px;
+    width: 50px;
 
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  font-family: "Lexend Deca";
-  font-size: 20px;
+    font-family: "Lexend Deca";
+    font-size: 20px;
 
-  transition: background-color 0.1s ease;
+    transition: background-color 0.1s ease;
 }
 
 #weekresponses #dayofweekindicator table td.active {
-  background-color: #00ff0099;
+    background-color: #00ff0099;
 
-  transition: background-color 0.1s ease;
+    transition: background-color 0.1s ease;
+}
+
+#weekresponses #weekanswers {
+    flex-basis: 20%;
+}
+
+#weekresponses #weekanswers table {
+    text-align: center;
+
+    width: 100%;
+
+    color: #b7c5cc;
+
+    font-family: "Lexend Deca";
+    font-size: 15px;
+
+    border-collapse: collapse;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#weekresponses #weekanswers table td {
+    border: 2px solid #303436;
+    height: 30px;
+    width: 100%;
+
+    text-align: center;
+
+    color: #b7c5cc;
+
+    font-family: "Lexend Deca";
+    font-size: 15px;
+
+    transition: background-color 0.1s ease;
 }
 
 #weekresponses #weekanswers {
@@ -756,27 +971,31 @@ td > image {
 }
 
 #weekresponses #exitbutton {
-  position: fixed;
+    position: fixed;
 
-  right: 10px;
-  top: 10px;
+    right: 10px;
+    top: 10px;
 }
 
 #weekresponses #dayresponses table {
-  width: 100%;
+    width: 100%;
 
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  border-collapse: collapse;
+    border-collapse: collapse;
 
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 
-  word-wrap: break-word;
-  word-break: break-word;
-  white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+#weekresponses #dayresponses {
+    flex-basis: 80%;
 }
 
 #weekresponses #dayresponses {
@@ -784,33 +1003,84 @@ td > image {
 }
 
 #weekresponses #dayresponses table td {
+<<<<<<< HEAD
   border: 2px solid #303436;
   aspect-ratio: 1/1;
   height: calc(170px / 5);
+=======
+    border: 2px solid #303436;
+    aspect-ratio: 1/1;
+    height: calc(170px / 5);
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  text-align: center;
+    text-align: center;
 
-  color: #b7c5cc;
+    color: #b7c5cc;
 
-  font-family: "Lexend Deca";
-  font-size: 3vh;
+    font-family: "Lexend Deca";
+    font-size: 3vh;
 
-  transition: background-color 0.1s ease;
+    transition: background-color 0.1s ease;
 
-  padding: 0.8vh;
+    padding: 0.8vh;
 }
 
 #weekresponses #dayresponses table td.correct {
-  background-color: #00ff0099;
+    background-color: #00ff0099;
 }
 
 #weekresponses #exitbutton {
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 #weekresponses #exitbutton:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+#responsescontainer {
+    display: flex;
+
+    align-items: stretch;
+}
+
+#lastweekanswers table {
+    margin-top: 50px;
+    width: 100%;
+
+    text-align: center;
+
+    color: #b7c5cc;
+
+    border-collapse: collapse;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+#lastweekanswers table td {
+    border: 2px solid #303436;
+    aspect-ratio: 1/1;
+    height: calc(170px / 5);
+
+    text-align: center;
+
+    color: #b7c5cc;
+
+    font-family: "Lexend Deca";
+    font-size: 3vh;
+
+    transition: background-color 0.1s ease;
+
+    padding: 0.8vh;
+}
+
+#weekresponses #dayresponses table td.correct {
+    background-color: #00ff0099;
 }
 
 #responsescontainer {
@@ -859,152 +1129,292 @@ td > image {
 }
 
 .overlay {
-  position: fixed;
-  inset: 0;
+    position: fixed;
+    inset: 0;
 
-  justify-content: center;
-  justify-items: center;
+    justify-content: center;
+    justify-items: center;
 }
 
 #objectcluemenuoverlay {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 #objectcluemenuoverlay.visible {
-  visibility: visible;
+    visibility: visible;
 }
 
 #miscicons {
-  position: fixed;
-  top: 0px;
-  right: 0px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
 
-  display: flex;
+    display: flex;
 
-  margin: 10px;
+    margin: 10px;
 }
 
 #miscicons > * {
-  margin: 5px;
+    margin: 5px;
 }
 
 .share {
-  background-color: rgb(47, 138, 47);
+    background-color: rgb(47, 138, 47);
 
-  color: rgb(255, 255, 255);
-  font-family: "Lexend Deca";
+    color: rgb(255, 255, 255);
+    font-family: "Lexend Deca";
 
-  padding: 10px;
+    padding: 10px;
 
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-  align-items: center;
+    align-items: center;
 
-  position: fixed;
+    position: fixed;
 
-  bottom: 5vh;
+    bottom: 5vh;
 }
 
 .share > h3 {
+<<<<<<< HEAD
   font-size: 20px;
+=======
+    font-size: 2vw;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  margin: 10px;
+    margin: 10px;
 
-  margin-left: 10px;
-  margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 
-  user-select: none;
+    user-select: none;
 }
 
 .share > img {
+<<<<<<< HEAD
   width: 80%;
   height: 80%;
+=======
+    width: 3vw;
+    height: 3vw;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  user-select: none;
+    user-select: none;
 }
 
 select {
+<<<<<<< HEAD
   background-color: #303436;
   width: 15%;
   height: 4%;
+=======
+    background-color: #303436;
+    width: 15vw;
+    height: 4vw;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 
-  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="12" viewBox="0 0 20 20" width="12" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 20,0 10,10"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="12" viewBox="0 0 20 20" width="12" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 20,0 10,10"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
 
-  border-radius: 0px;
+    border-radius: 0px;
 
-  margin: 10px;
+    margin: 10px;
 
-  color: #ddd;
+    color: #ddd;
 
-  font-size: 20px;
-  text-align: center;
-  font-family: "Lexend Deca";
+    font-size: 20px;
+    text-align: center;
+    font-family: "Lexend Deca";
 }
 
 #calendar > #dateselectbar {
-  display: flex;
+    display: flex;
 
-  align-items: center;
+    align-items: center;
 }
 
 #calendarpopup #backarrow {
-  position: fixed;
+    position: fixed;
 
-  width: 50px;
+    width: 50px;
 
-  bottom: 10px;
-  left: 10px;
+    bottom: 10px;
+    left: 10px;
 
-  transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 #calendarpopup #forwardarrow {
-  position: fixed;
+    position: fixed;
 
-  width: 50px;
+    width: 50px;
 
-  bottom: 10px;
-  right: 10px;
+    bottom: 10px;
+    right: 10px;
 
-  transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 #calendarpopup .arrow:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 
-  transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 #topbanner {
-  position: fixed;
+    position: fixed;
 
+<<<<<<< HEAD
   width: 100%;
   height: 75px;
+=======
+    width: 100vw;
+    height: 75px;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
-  top: 0;
-  left: 0;
+    top: 0;
+    left: 0;
 
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 
-  background-color: #0f1111;
+    background-color: #0f1111;
 
-  box-shadow: 0px 0px 10px #0f1111;
+    box-shadow: 0px 0px 10px #0f1111;
 }
 
 #topbanner #logo {
-  width: 300px;
+    width: 300px;
 }
 
 #bannerspacing {
-  height: 100px;
+    height: 100px;
+}
+
+#countdownmenu table {
+    width: 70%;
+
+    font-family: "Lexend Deca";
+    color: #b7c5cc;
+
+    text-align: center;
+}
+
+#countdownmenu table td {
+    font-size: 50px;
+    width: 25%;
+}
+
+#dayindicator {
+    font-family: Lexend Deca, sans-serif;
+
+    color: #b7c5cc;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#dayindicator * {
+    margin: 0px;
+
+    text-align: center;
+}
+
+#score {
+    font-family: Lexend Deca, sans-serif;
+
+    color: #b7c5cc;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#score * {
+    margin: 0px;
+
+    text-align: center;
+}
+
+#objectcluemenu .arrow {
+    width: 50px;
+    height: 50px;
+
+    position: fixed;
+    bottom: 2%;
+
+    transition: 0.1s ease transform;
+}
+
+#objectcluemenu .arrow:hover {
+    transform: scale(1.2);
+
+    transition: 0.1s ease transform;
+}
+
+#objectcluemenu #leftarrow {
+    left: 2%;
+}
+
+#objectcluemenu #rightarrow {
+    right: 2%;
+}
+
+#clueindex {
+    position: fixed;
+    bottom: 2%;
+
+    color: #b7c5cc;
+
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 25px;
+
+    user-select: none;
+}
+
+#copiedtoclipboardnotice {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: #131516;
+
+    padding: 10px;
+
+    border-radius: 0px;
+
+    box-shadow: 0px 0px 10px #131516aa;
+
+    visibility: hidden;
+    opacity: 0%;
+
+    transition: opacity 0.2s ease-out, visibility 0.2s step-end;
+}
+
+#copiedtoclipboardnotice.visible {
+    visibility: visible;
+    opacity: 100%;
+
+    transition: opacity 0.2s ease-in;
+}
+
+#copiedtoclipboardnotice h2 {
+    font-family: "Lexend Deca", sans-serif;
+    color: #b7c5cc;
+
+    font-size: 25px;
+
+    margin: 10px;
+
+    user-select: none;
 }
 
 #countdownmenu table {

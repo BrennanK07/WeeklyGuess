@@ -111,6 +111,7 @@ let bonusCompletionGrid = document.getElementById("completiongridbonus");
 let completedBeforeToday = true;
 let weekCompleted = false;
 
+<<<<<<< HEAD
 let currentClueMenuPage = -1;
 
 //FLAGS (for debugging etc)
@@ -125,6 +126,8 @@ let displayedCountdownMenu = false;
 /* Flag Controlled Code */
 dayOfWeek = FORCED_DAY_OF_WEEK;
 
+=======
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 async function restoreGuesses() {
     if (guessData == null) {
         guessData = [];
@@ -165,8 +168,12 @@ async function restoreGuesses() {
                         objectClueChecks[correctId].classList.add("visible");
 
                         if (i + 1 == dayOfWeek) {
+<<<<<<< HEAD
                             if (!FORCE_WEEK_COMPLETE)
                                 completedBeforeToday = false;
+=======
+                            completedBeforeToday = false;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
                         }
                     }
                 }
@@ -280,6 +287,7 @@ calendarPopupSpaces.forEach((square, i) => {
     });
 });
 
+<<<<<<< HEAD
 objectClueMenuLeftArrow.addEventListener("click", objectClueMenuLeftButtonPress);
 
 objectClueMenuRightArrow.addEventListener("click", objectClueMenuRightButtonPress);
@@ -288,6 +296,21 @@ function objectClueMenuLeftButtonPress() {
     let newIndex = currentClueMenuPage - 1;
     if (newIndex < 0) {
         newIndex = completedBeforeToday && weekCompleted ? 1 : 6;
+=======
+objectClueMenuLeftArrow.addEventListener("click", () => {
+    let currentCategory = objectClueMenuCategory.innerHTML;
+
+    let currentIndex = -1;
+    for (let i = 0; i < 7; i++) {
+        if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+            currentIndex = i;
+        }
+    }
+
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) {
+        newIndex = 6;
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
     }
 
     if (!onMainPage) {
@@ -295,11 +318,28 @@ function objectClueMenuLeftButtonPress() {
     } else {
         openClueMenu(0);
     }
+<<<<<<< HEAD
 }
 
 function objectClueMenuRightButtonPress() {
     let newIndex = currentClueMenuPage + 1;
     if (newIndex > 6 || newIndex > 1 && completedBeforeToday && weekCompleted) {
+=======
+});
+
+objectClueMenuRightArrow.addEventListener("click", () => {
+    let currentCategory = objectClueMenuCategory.innerHTML;
+
+    let currentIndex = -1;
+    for (let i = 0; i < 7; i++) {
+        if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+            currentIndex = i;
+        }
+    }
+
+    let newIndex = currentIndex + 1;
+    if (newIndex > 6) {
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
         newIndex = 0;
     }
 
@@ -308,7 +348,11 @@ function objectClueMenuRightButtonPress() {
     } else {
         openClueMenu(0);
     }
+<<<<<<< HEAD
 }
+=======
+});
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 
 //previousWeekAnswersOpenButton.addEventListener("click", () => { previousWeekAnswers.classList.add("visible"); onMainPage = false });
 previousWeekAnswersExitButton.addEventListener("click", () => {
@@ -344,11 +388,47 @@ document.addEventListener("keydown", function (event) {
     }
 
     if (event.key == "ArrowLeft") {
+<<<<<<< HEAD
         objectClueMenuLeftButtonPress();
     }
 
     if (event.key == "ArrowRight") {
         objectClueMenuRightButtonPress();
+=======
+        let currentCategory = objectClueMenuCategory.innerHTML;
+
+        let currentIndex = -1;
+        for (let i = 0; i < 7; i++) {
+            if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                currentIndex = i;
+            }
+        }
+
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+            newIndex = 6;
+        }
+
+        openClueMenu(newIndex);
+    }
+
+    if (event.key == "ArrowRight") {
+        let currentCategory = objectClueMenuCategory.innerHTML;
+
+        let currentIndex = -1;
+        for (let i = 0; i < 7; i++) {
+            if (json.weeks[activeSolutionId].solutions[i].category == currentCategory) {
+                currentIndex = i;
+            }
+        }
+
+        let newIndex = currentIndex + 1;
+        if (newIndex > 6) {
+            newIndex = 0;
+        }
+
+        openClueMenu(newIndex);
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
     }
 });
 
@@ -373,6 +453,18 @@ for (let i = 0; i < 7; i++) {
 
 objectClues.forEach((objectClue, index) => {
     objectClue.addEventListener("click", () => openClueMenu(index));
+<<<<<<< HEAD
+=======
+});
+
+//bonus
+for (let i = 0; i < 2; i++) {
+    bonusObjectClues[i].style.backgroundColor = "#0000ff55";
+}
+
+bonusObjectClues.forEach((objectClue, index) => {
+    objectClue.addEventListener("click", () => openClueMenu(index, true));
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
 });
 
 //bonus
@@ -424,7 +516,11 @@ async function guess() {
     if (
         correctId != -1 &&
         !objectClueChecks[correctId].classList.contains("visible") &&
+<<<<<<< HEAD
         dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099" && !weekCompleted && !completedBeforeToday
+=======
+        dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099"
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
     ) {
         dayGuessCells[totalGuessesToday].style.backgroundColor = "#00ff0099";
         objectClueChecks[correctId].classList.add("visible");
@@ -437,6 +533,10 @@ async function guess() {
             document.getElementById("wordsstat").innerHTML = totalWords;
 
             guessCorrect = true;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
             score += 5 * (parseInt(json.weeks[activeSolutionId].solutions[correctId].difficulty) + 1) * (7 - dayOfWeek);
             updateScoreDisplay();
         }
@@ -549,10 +649,13 @@ function openClueMenu(itemIndex, isBonus = false) {
         return;
     }
 
+<<<<<<< HEAD
     if (weekCompleted) {
         isBonus = true;
     }
 
+=======
+>>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
     objectClueMenuPageIndex.innerHTML = (itemIndex + 1).toString();
 
     onMainPage = false;
