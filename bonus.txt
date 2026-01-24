@@ -1,0 +1,10 @@
+gyroscope;Object;Spins;Resists changes in direction;Found in navigation systems;Used for maintaining balance;Sometimes found as a toy
+continuity;Concept;No sudden breaks;Smooth progression;Opposite of interruption;Keeps going;In math, the vertical line test
+parabola;Concept;Curved shape;Shape of trajectory of objects due to gravity;Symmetrical about center;Graphed as a U shape;y=x^2
+The Panama Canal;Geographic;Waterway;Thru-put through ocean;Uses locks to move ships;In Central America;Connects Pacific and Atlantic
+Area 51;Place;Restricted location;Government-controlled;Surrounded by secrecy;Frequently linked to rumors;Located in the Nevada desert
+shortcut;Thing;Saves time;Not always obvious;Physical or digital;Avoids main route;Taken on a dirt path?
+static;Concept;Lacking movement;Can describe electricity;Sometimes noisy;Opposite of dynamic;Happens when charges build up
+cache;Computing;Temporary storage;Meant to speed things up;Holds frequently used data;Can become outdated;Often cleared to fix issues
+threshold;Concept;Boundary / Limit;Marks a change;Once crossed, something happens; Often used in science and psychology;Can be physical or abstract
+momentum;Physical;Related to motion;Depends on mass and speed;Harder to stop when large;Conserved in closed systems;Used metaphorically for progress

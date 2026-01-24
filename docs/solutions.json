@@ -1,27 +1,276 @@
 {
-    "weeks":[
-        {"weekId":"2025-11-9","solutions":[{"difficulty":"1","solution":"0ae2f6c706cff60bff7c0125b99cae8c53e1a1702f02316848bc99e597d084db","category":"Animal"},{"difficulty":"1","solution":"3cb562c897155ca6e376e1df492d7bd0c09a09a7fd20a632b6ea1092837d1952","category":"Geographic"},{"difficulty":"0","solution":"1d324c4c932b705eb2b3de777b8530c66faab24393d72d60e6b677e35991bdbc","category":"Place"},{"difficulty":"2","solution":"0e7c3ecd536467f8b11d2ce75a2384e4b97b3f14bcf0beee3d3a0c0420d9d2aa","category":"Movie"},{"difficulty":"3","solution":"eabd23ef1aa629b3c60c4f6df79389adaf2d14340442af76ddf990cecb9c13c1","category":"Person"},{"difficulty":"0","solution":"387ecca8bb2a9c6cdf1ee2781dfac8c1b6a0715f4b3c7c3a56a9cf8aaf6fee46","category":"Music"},{"difficulty":"2","solution":"2b78da3dc866654e6ea7cb2f654df44746b6f02876acbb2a05726ab3d915e47e","category":"Website"}],"hint":[{"hints":["Associated with warm climates","Often found standing still","Notable for posture","Known for group behavior","Recognized for unusual feeding habits","Large pink wading bird\r",null]},{"hints":["Formed by natural elevation changes","Produces continuous motion","Often accompanied by sound","Popular scenic destination","Created by flowing water","Vertical drop of a river\r",null]},{"hints":["Highly recognizable structure","Central to U.S. governance","Heavily photographed","Located on a famous avenue","Residence connected to executive leadership","Home of the U.S. President\r",null]},{"hints":["Late-20th-century production","Features philosophical themes","Known for iconic visuals","Stars a famous action actor","Introduced the idea of simulated perception","1999 sci-fi film starring Neo\r",null]},{"hints":["Active during the 20th century","Held major U.S. political roles","Took office under unexpected circumstances","Known for domestic reform","Connected to Vietnam-era decisions","36th President of the United States\r",null]},{"hints":["Influential cultural group","Originated in Europe","Changed popular art forms","Four primary contributors","Known worldwide for iconic songs","British band: John, Paul, George, Ringo\r",null]},{"hints":["Digital service","Global user base","Focused on audio content","Offers both free and paid access","Created in Europe","Music-streaming platform",null]}]}
+    "weeks": [
+        {
+            "weekId": "2025-10-19; TEST",
+            "solutions": [
+                {
+                    "difficulty": 0,
+                    "solution": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+                    "category": "Category1"
+                },
+                {
+                    "difficulty": 1,
+                    "solution": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+                    "category": "Category2"
+                },
+                {
+                    "difficulty": 2,
+                    "solution": "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6",
+                    "category": "Category3"
+                },
+                {
+                    "difficulty": 1,
+                    "solution": "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4",
+                    "category": "Category4"
+                },
+                {
+                    "difficulty": 3,
+                    "solution": "3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea",
+                    "category": "Category5"
+                },
+                {
+                    "difficulty": 1,
+                    "solution": "252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111",
+                    "category": "Category6"
+                },
+                {
+                    "difficulty": 0,
+                    "solution": "cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29",
+                    "category": "Category7"
+                }
+            ],
+            "hint": [
+                { "hints": ["1a", "1b", "1c", "1d", "1e", "1f", "1g"] },
+                { "hints": ["2a", "2b", "2c", "2d", "2e", "2f", "2g"] },
+                { "hints": ["3a", "3b", "3c", "3d", "3e", "3f", "3g"] },
+                { "hints": ["4a", "4b", "4c", "4d", "4e", "4f", "4g"] },
+                { "hints": ["5a", "5b", "5c", "5d", "5e", "5f", "5g"] },
+                { "hints": ["6a", "6b", "6c", "6d", "6e", "6f", "6g"] },
+                { "hints": ["7a", "7b", "7c", "7d", "7e", "7f", "7g"] }
+            ]
+        },
 
-        ,{
-           "weekId": "2025-10-19; TEST",
-           "solutions":[
-			{"difficulty":0, "solution": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb", "category": "Category1"},
-        	{"difficulty":1, "solution": "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d", "category": "Category2"},
-            {"difficulty":2, "solution": "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6", "category": "Category3"},
-			{"difficulty":1, "solution": "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4", "category": "Category4"},
-			{"difficulty":3, "solution": "3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea", "category": "Category5"},
-            {"difficulty":1, "solution": "252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111", "category": "Category6"},
-			{"difficulty":0, "solution": "cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29", "category": "Category7"}
-           ],
-           "hint":[
-            {"hints":["1a", "1b", "1c", "1d", "1e", "1f", "1g"]},
-            {"hints":["2a", "2b", "2c", "2d", "2e", "2f", "2g"]},
-            {"hints":["3a", "3b", "3c", "3d", "3e", "3f", "3g"]},
-            {"hints":["4a", "4b", "4c", "4d", "4e", "4f", "4g"]},
-            {"hints":["5a", "5b", "5c", "5d", "5e", "5f", "5g"]},
-            {"hints":["6a", "6b", "6c", "6d", "6e", "6f", "6g"]},
-            {"hints":["7a", "7b", "7c", "7d", "7e", "7f", "7g"]}
-           ]
+        {
+            "weekId": "2025-11-9",
+            "solutions": [
+                {
+                    "difficulty": "1",
+                    "solution": "0ae2f6c706cff60bff7c0125b99cae8c53e1a1702f02316848bc99e597d084db",
+                    "category": "Animal"
+                },
+                {
+                    "difficulty": "1",
+                    "solution": "3cb562c897155ca6e376e1df492d7bd0c09a09a7fd20a632b6ea1092837d1952",
+                    "category": "Geographic"
+                },
+                {
+                    "difficulty": "0",
+                    "solution": "1d324c4c932b705eb2b3de777b8530c66faab24393d72d60e6b677e35991bdbc",
+                    "category": "Place"
+                },
+                {
+                    "difficulty": "2",
+                    "solution": "0e7c3ecd536467f8b11d2ce75a2384e4b97b3f14bcf0beee3d3a0c0420d9d2aa",
+                    "category": "Movie"
+                },
+                {
+                    "difficulty": "3",
+                    "solution": "eabd23ef1aa629b3c60c4f6df79389adaf2d14340442af76ddf990cecb9c13c1",
+                    "category": "Person"
+                },
+                {
+                    "difficulty": "0",
+                    "solution": "387ecca8bb2a9c6cdf1ee2781dfac8c1b6a0715f4b3c7c3a56a9cf8aaf6fee46",
+                    "category": "Music"
+                },
+                {
+                    "difficulty": "2",
+                    "solution": "2b78da3dc866654e6ea7cb2f654df44746b6f02876acbb2a05726ab3d915e47e",
+                    "category": "Website"
+                }
+            ],
+            "hint": [
+                {
+                    "hints": [
+                        "Associated with warm climates",
+                        "Often found standing still",
+                        "Notable for posture",
+                        "Known for group behavior",
+                        "Recognized for unusual feeding habits",
+                        "Large pink wading bird\r",
+                        null
+                    ]
+                },
+                {
+                    "hints": [
+                        "Formed by natural elevation changes",
+                        "Produces continuous motion",
+                        "Often accompanied by sound",
+                        "Popular scenic destination",
+                        "Created by flowing water",
+                        "Vertical drop of a river\r",
+                        null
+                    ]
+                },
+                {
+                    "hints": [
+                        "Highly recognizable structure",
+                        "Central to U.S. governance",
+                        "Heavily photographed",
+                        "Located on a famous avenue",
+                        "Residence connected to executive leadership",
+                        "Home of the U.S. President\r",
+                        null
+                    ]
+                },
+                {
+                    "hints": [
+                        "Late-20th-century production",
+                        "Features philosophical themes",
+                        "Known for iconic visuals",
+                        "Stars a famous action actor",
+                        "Introduced the idea of simulated perception",
+                        "1999 sci-fi film starring Neo\r",
+                        null
+                    ]
+                },
+                {
+                    "hints": [
+                        "Active during the 20th century",
+                        "Held major U.S. political roles",
+                        "Took office under unexpected circumstances",
+                        "Known for domestic reform",
+                        "Connected to Vietnam-era decisions",
+                        "36th President of the United States\r",
+                        null
+                    ]
+                },
+                {
+                    "hints": [
+                        "Influential cultural group",
+                        "Originated in Europe",
+                        "Changed popular art forms",
+                        "Four primary contributors",
+                        "Known worldwide for iconic songs",
+                        "British band: John, Paul, George, Ringo\r",
+                        null
+                    ]
+                },
+                {
+                    "hints": [
+                        "Digital service",
+                        "Global user base",
+                        "Focused on audio content",
+                        "Offers both free and paid access",
+                        "Created in Europe",
+                        "Music-streaming platform",
+                        null
+                    ]
+                }
+            ]
+        },
+
+        {
+            "weekId": "2026-01-11",
+            "solutions": [
+                { "difficulty": "2", "solution": "f9ed65a9069a2dc0430b768bf6112ed1cf6aba7ed794e2450aeb23bd34da9c33", "category": "Famous Place" },
+                { "difficulty": "1", "solution": "00154761637ca746c354a6d9cfbf1da1a92e79afa6bb127bb8a1c434e9c73170", "category": "Household Object" },
+                { "difficulty": "0", "solution": "f5df25e754121fc6d039e5522c93910fca6a6e4ee6ca29d7214f22329bca0e82", "category": "Famous Landmark" },
+                { "difficulty": "2", "solution": "cd282cd375dcc40a9fa0f06a7b72f24b7cacb587af40aea3f53227cbd6cb1124", "category": "Chemistry" },
+                { "difficulty": "3", "solution": "b58224f927961d476efd0b62a091f9c7bb0335bfd259280072ee8686013a41c2", "category": "Famous Person" },
+                { "difficulty": "2", "solution": "4a2f99869acda1bc80ef6e13196e3069ec75dda32a6459bab3a5b37549276e5c", "category": "Thing" },
+                { "difficulty": "1", "solution": "619a2ccf126ce837dc7cd3bdb4d7f44280a0ea4f721e5a738f859aa19d52a78f", "category": "Geographic" }
+            ],
+            "hint": [
+                {
+                    "hints": [
+                        "Created thousands of years ago",
+                        "Made mostly of stone",
+                        "Built for public gatherings",
+                        "Partially ruined",
+                        "Used as a fighting arena",
+                        "Completed construction in the 1st century",
+                        "In Rome\r"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Technically green, but does not show it",
+                        "Responds to light",
+                        "Hangs on walls",
+                        "Shows something",
+                        "Very smooth",
+                        "Bad luck if broken",
+                        "Reflects light\r"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Made mostly of metal",
+                        "Once the tallest man-made structure in the world",
+                        "Located in Europe",
+                        "City found in is known for art, food, and fashion",
+                        "Symbol of the city",
+                        "Built in the late 1800s for the World's Fair",
+                        "Located in Paris\r"
+                    ]
+                },
+                {
+                    "hints": [
+                        "H2O is an example of one",
+                        "Made of smaller parts",
+                        "Part of everything physical",
+                        "Forms compounds",
+                        "Has a defined shape and structure",
+                        "Structure affects how it behaves",
+                        "Held together by chemical bonds\r"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Worked with science",
+                        "Has a unit named after them",
+                        "Dealt mainly with electricity",
+                        "Their constant is used for measuring magnetic flux capacity",
+                        "Pushed for Alternating Current",
+                        "Developed coils that produced high-voltage electricity",
+                        "They share their last name with a famous car company\r"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Written Media",
+                        "A book",
+                        "Tells a story",
+                        "About a real person",
+                        "Describes a life",
+                        "Describes the life of a person, but not directly written by that person themselves",
+                        "A life story about another person\r"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Prominent over North America and much of the world too",
+                        "Contains plants",
+                        "Contains trees",
+                        "Very large, can cover hundreds and thousands of acres",
+                        "Provides oxygen",
+                        "Provides shade and can be dense",
+                        "Can have paths or trails"
+                    ]
+                }
+            ],
+            "bonusData":[
+                ["76d5b4bad06220c2cb349e0252b7845093bbba60d34b54a8b6d56384246cf8ec","Object","Spins","Resists changes in direction","Found in navigation systems","Used for maintaining balance","Sometimes found as a toy\r"],
+                ["0adc36057cef79f8a7b8a862bb9fab8cbdc13828498c636c4d92d761fd621a0f","Concept","No sudden breaks","Smooth progression","Opposite of interruption","Keeps going","In math, the vertical line test\r"],
+                ["d548d9d07ab0b0fbd76e870c96902db9c51ebca887f0f3eff368c8fe2e878d98","Concept","Curved shape","Shape of trajectory of objects due to gravity","Symmetrical about center","Graphed as a U shape","y=x^2\r"],
+                ["a77102547f4cbfad12adf9051d08803de80372121fcc90f8de507aded7a29a9b","Geographic","Waterway","Thru-put through ocean","Uses locks to move ships","In Central America","Connects Pacific and Atlantic\r"],
+                ["00c00790c439a4cc074d6ab9baa60520127890e2f7ae0ab4fe78e0a6d256a19b","Place","Restricted location","Government-controlled","Surrounded by secrecy","Frequently linked to rumors","Located in the Nevada desert\r"],
+                ["8dfea6856769fb4dca2805958774914b2156feea1f915e79eb40524de77a71c1","Thing","Saves time","Not always obvious","Physical or digital","Avoids main route","Taken on a dirt path?\r"],
+                ["2053dbbf6ec7135c4e994d3464c478db6f48d3ca21052c8f44915edc96e02c39","Concept","Lacking movement","Can describe electricity","Sometimes noisy","Opposite of dynamic","Happens when charges build up\r"],
+                ["5e1ecee06a7fc06f305ae5c12acfe7a7f67b8ece7af76932ed3afab00c3c6921","Computing","Temporary storage","Meant to speed things up","Holds frequently used data","Can become outdated","Often cleared to fix issues\r"],
+                ["497e22fe854a24bcfb8aa568e454fa262cdb64a109e01dabf5793b46326144da","Concept","Boundary / Limit","Marks a change","Once crossed, something happens"," Often used in science and psychology","Can be physical or abstract\r"],
+                ["446be308664e1964b816217ba48334a777837850765f863efbba3c6608da6b90","Physical","Related to motion","Depends on mass and speed","Harder to stop when large","Conserved in closed systems","Used metaphorically for progress"]]
         }
-  ]
+    ]
 }

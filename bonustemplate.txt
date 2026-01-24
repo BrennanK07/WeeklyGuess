@@ -1,0 +1,10 @@
+word1;category;hint;hint;hint;hint;hint
+word2;category;hint;hint;hint;hint;hint
+word3;category;hint;hint;hint;hint;hint
+word4;category;hint;hint;hint;hint;hint
+word5;category;hint;hint;hint;hint;hint
+word6;category;hint;hint;hint;hint;hint
+word7;category;hint;hint;hint;hint;hint
+word8;category;hint;hint;hint;hint;hint
+word9;category;hint;hint;hint;hint;hint
+word10;category;hint;hint;hint;hint;hint
