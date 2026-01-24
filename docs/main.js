@@ -11,7 +11,7 @@ let guessButton = document.getElementById("guessbutton");
 
 let dayGuessCells = document.querySelectorAll("#dayguesses table tr td");
 
-let activeSolutionId = 2; //changes depending on the week
+let activeSolutionId = ; //changes depending on the week
 let dayOfWeek = new Date().getDay();
 
 let totalGuessesToday = 0;
