@@ -259,7 +259,6 @@
                         "Can have paths or trails"
                     ]
                 }
-<<<<<<< HEAD
             ],
             "bonusData":[
                 ["76d5b4bad06220c2cb349e0252b7845093bbba60d34b54a8b6d56384246cf8ec","Object","Spins","Resists changes in direction","Found in navigation systems","Used for maintaining balance","Sometimes found as a toy\r"],
@@ -272,9 +271,6 @@
                 ["5e1ecee06a7fc06f305ae5c12acfe7a7f67b8ece7af76932ed3afab00c3c6921","Computing","Temporary storage","Meant to speed things up","Holds frequently used data","Can become outdated","Often cleared to fix issues\r"],
                 ["497e22fe854a24bcfb8aa568e454fa262cdb64a109e01dabf5793b46326144da","Concept","Boundary / Limit","Marks a change","Once crossed, something happens"," Often used in science and psychology","Can be physical or abstract\r"],
                 ["446be308664e1964b816217ba48334a777837850765f863efbba3c6608da6b90","Physical","Related to motion","Depends on mass and speed","Harder to stop when large","Conserved in closed systems","Used metaphorically for progress"]]
-=======
-            ]
->>>>>>> 3513b7a138d004816c82bea0e973358fda6c2574
         }
     ]
 }
