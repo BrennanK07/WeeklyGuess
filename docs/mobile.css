@@ -69,3 +69,53 @@
   height: calc(100% - 150px);
   top: calc(50% + 70px);
 }
+
+#dayguesses {
+  width: 100%;
+}
+
+#dayguesses > table {
+  width: 100%;
+}
+
+#dayguesses > table td {
+  height: 75px;
+}
+
+#guessbar > div {
+  display: block;
+  width: 100%;
+}
+
+#guessbar > div > input {
+  width: 90%;
+
+  display: flex;
+
+  justify-self: center;
+}
+
+#guessbar > div > div {
+  margin-top: 50px;
+  width: 100%;
+
+  flex-direction: row;
+  justify-content: center;
+}
+
+#guessbar button {
+  width: 400px;
+  height: 100px;
+
+  padding: 1px;
+
+  margin: 10px;
+
+  font-size: 40px;
+}
+
+#guessbar #seeresponsehistory {
+  font-size: 35px;
+
+  margin-top: 10px;
+}
