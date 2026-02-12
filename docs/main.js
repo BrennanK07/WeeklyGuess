@@ -11,7 +11,7 @@ let guessButton = document.getElementById("guessbutton");
 
 let dayGuessCells = document.querySelectorAll("#dayguesses table tr td");
 
-let activeSolutionId = 2; //changes depending on the week
+let activeSolutionId = getSolutionId(); //changes depending on the week
 let dayOfWeek = new Date().getDay();
 
 let totalGuessesToday = 0;
@@ -22,7 +22,7 @@ let guessData = JSON.parse(localStorage.getItem("guessData"));
 let todayDate = getDateStr();
 
 let objectClueMenu = document.getElementById("objectcluemenu");
-let objectClueMenuOverlay = document.getElementById("objectcluemenuoverlay");
+let objectClueMenuOverlay = document.getElementById("objectcluemenu");
 
 let objectClueMenuExit = document.getElementById("objectcluemenuclose");
 
@@ -117,13 +117,15 @@ let currentClueMenuPage = -1;
 
 /* Forced Flags */
 let FORCE_WEEK_COMPLETE = false;
-let FORCED_DAY_OF_WEEK = dayOfWeek;
+let FORCED_DAY_OF_WEEK = 6 //dayOfWeek;
+let FORCED_SOLUTION_ID = 1 //activeSolutionId;
 
 /* Internal Flags */
 let displayedCountdownMenu = false;
 
 /* Flag Controlled Code */
 dayOfWeek = FORCED_DAY_OF_WEEK;
+activeSolutionId = FORCED_SOLUTION_ID;
 
 async function restoreGuesses() {
     if (guessData == null) {
@@ -278,6 +280,11 @@ calendarPopupSpaces.forEach((square, i) => {
     square.addEventListener("click", () => {
         calendarSpaceClicked(i);
     });
+});
+
+window.addEventListener("resize", () => {
+    document.querySelectorAll("#objectcluemenu td .fit-text")
+        .forEach(fitCellText);
 });
 
 objectClueMenuLeftArrow.addEventListener("click", objectClueMenuLeftButtonPress);
@@ -557,12 +564,15 @@ function openClueMenu(itemIndex, isBonus = false) {
 
     onMainPage = false;
 
+    let padStart = `<span class="fit-text">`;
+    let padEnd = "</span>";
+
     if (!isBonus) {
         objectClueMenuCategory.innerHTML = json.weeks[activeSolutionId].solutions[itemIndex].category;
 
         for (let i = 0; i < 7; i++) {
             if (i <= dayOfWeek) {
-                objectClueTable[i].innerHTML = json.weeks[activeSolutionId].hint[itemIndex].hints[i];
+                objectClueTable[i].innerHTML = padStart + json.weeks[activeSolutionId].hint[itemIndex].hints[i] + padEnd;
             } else {
                 //fill with date of reveal
                 objectClueTable[i].innerHTML = getDateStr(getWeekday() - i, true, false);
@@ -571,7 +581,7 @@ function openClueMenu(itemIndex, isBonus = false) {
             objectClueTable[i].classList.remove("hidden");
         }
     } else {
-        objectClueMenuCategory.innerHTML = "Bonus - " + json.weeks[activeSolutionId].bonusData[itemIndex + ((dayOfWeek - 2) * 2)][1];
+        objectClueMenuCategory.innerHTML = "Bonus - " + padStart + json.weeks[activeSolutionId].bonusData[itemIndex + ((dayOfWeek - 2) * 2)][1] + padEnd;
 
         for (let i = 0; i < 7; i++) {
             if (i < 5) {
@@ -588,6 +598,8 @@ function openClueMenu(itemIndex, isBonus = false) {
 
     objectClueMenuOverlay.classList.add("visible");
     objectClueMenu.classList.add("visible");
+
+    updateCellTextSizing();
 }
 
 function closeClueMenu() {
@@ -1031,6 +1043,10 @@ function updateWeekCompletionPercentageStat() {
 
     let percentage = Math.floor((totalCompleted / 7) * 100);
 
+    if (weekCompleted) {
+        percentage = 100;
+    }
+
     document.getElementById("weekprogressstat").innerHTML = percentage + "%";
 }
 
@@ -1051,4 +1067,47 @@ function copyToClipboardNotice() {
     setTimeout(() => {
         notice.classList.remove("visible");
     }, 2000);
+}
+
+function getSolutionId() {
+    let startDate = "2026-1-11";
+    let startUnixTimestamp = new Date(startDate) / 1000;
+
+    let currentTime = new Date();
+    let todayUnixTimestamp = currentTime.getTime() / 1000;
+
+    let timestampDiff = todayUnixTimestamp - startUnixTimestamp;
+
+    let dayDifference = Math.floor(timestampDiff / (60 * 60 * 24));
+    let weekDifference = Math.floor(dayDifference / 7);
+
+    return weekDifference;
+}
+
+function fitCellText(span) {
+    const cell = span.parentElement;
+    let clueMenuWidth = objectClueMenu.style.width;
+
+    console.log(clueMenuWidth);
+
+    let fontSize = 25;
+
+    //determine optimal font size by screen params
+    if (clueMenuWidth >= 850) {
+        fontSize = 35;
+    } else if (clueMenuWidth >= 750) {
+        fontSize = 25;
+    } else if (clueMenuWidth >= 650) {
+        fontSize = 20;
+    } else {
+        fontSize = 15;
+    }
+
+    fontSize = 25;
+
+    span.style.fontSize = fontSize + "px";
+}
+
+function updateCellTextSizing() {
+    document.querySelectorAll(".fit-text").forEach(fitCellText);
 }

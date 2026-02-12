@@ -1,0 +1,71 @@
+#pagesquasher {
+  width: 100%;
+}
+
+#topbanner {
+  height: 150px;
+}
+
+#topbanner #logo {
+  width: 400px;
+  height: 100px;
+}
+
+#topbanner p {
+  font-size: 30px;
+}
+
+#topbanner h2 {
+  font-size: 40px;
+}
+
+#bannerspacing {
+  height: 150px;
+}
+
+#completiongrid {
+  position: absolute;
+
+  top: 50px;
+}
+
+#completiongrid table td {
+  width: calc(100vw / 7);
+  height: calc(100vw / 7);
+
+  font-size: 50px;
+}
+
+#miscicons {
+  left: 0;
+
+  width: 100vw;
+  height: 150px;
+
+  align-items: center;
+
+  display: block;
+}
+
+#info {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+
+  left: 0;
+  top: 25px;
+}
+
+#help {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+
+  right: 0;
+  top: 25px;
+}
+
+#pagesquasher {
+  height: calc(100% - 150px);
+  top: calc(50% + 70px);
+}

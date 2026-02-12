@@ -2,6 +2,15 @@
 
 html {
   background-color: #131516;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
 }
 
 #pagesquasher {
@@ -11,9 +20,17 @@ html {
   position: absolute;
 
   left: 50%;
-  top: 105px;
+  top: calc(50% + 40px);
 
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+}
+
+#mainpageui {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
 }
 
 #guessbar > div {
@@ -204,7 +221,7 @@ td > image {
 #objectcluemenu {
   position: fixed;
 
-  width: 70%;
+  width: 90%;
   height: 60%;
 
   left: 50%;
@@ -260,7 +277,15 @@ td > image {
   color: #b7c5cc;
 
   font-family: "Lexend Deca";
-  font-size: 25px;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+.fit-text {
+  white-space: normal;
+  line-height: 1.1;
+
+  overflow: hidden;
 }
 
 #objectcluemenu > table td.hidden {
@@ -866,11 +891,11 @@ td > image {
   justify-items: center;
 }
 
-#objectcluemenuoverlay {
+#objectcluemenu {
   visibility: hidden;
 }
 
-#objectcluemenuoverlay.visible {
+#objectcluemenu.visible {
   visibility: visible;
 }
 
@@ -993,6 +1018,7 @@ select {
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   background-color: #0f1111;
 

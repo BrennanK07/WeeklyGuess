@@ -3,6 +3,13 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="mobile.css"
+      media="(max-aspect-ratio: 1/1)"
+    />
+
     <title>WeekWord</title>
 
     <script
@@ -34,112 +41,114 @@
     </div>
 
     <div id="pagesquasher">
-      <div id="completiongrid" class="">
-        <table>
-          <tr id="difficultybar">
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-          </tr>
+      <div id="mainpageui">
+        <div id="mainpageuiflex">
+          <div id="completiongrid" class="">
+            <table>
+              <tr id="difficultybar">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+              </tr>
 
-          <tr id="completionbar">
-            <td><img src="icons/check.svg" /></td>
-            <td><img src="icons/check.svg" /></td>
-            <td><img src="icons/check.svg" /></td>
-            <td><img src="icons/check.svg" /></td>
-            <td><img src="icons/check.svg" /></td>
-            <td><img src="icons/check.svg" /></td>
-            <td><img src="icons/check.svg" /></td>
-          </tr>
-        </table>
+              <tr id="completionbar">
+                <td><img src="icons/check.svg" /></td>
+                <td><img src="icons/check.svg" /></td>
+                <td><img src="icons/check.svg" /></td>
+                <td><img src="icons/check.svg" /></td>
+                <td><img src="icons/check.svg" /></td>
+                <td><img src="icons/check.svg" /></td>
+                <td><img src="icons/check.svg" /></td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="completiongridbonus" class="hidden">
+            <table>
+              <tr id="difficultybar">
+                <td>1</td>
+                <td>2</td>
+              </tr>
+
+              <tr id="completionbar">
+                <td><img src="icons/check.svg" /></td>
+                <td><img src="icons/check.svg" /></td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="dayguesses">
+            <table>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="guessbar">
+            <div>
+              <input id="guessinput" type="text" autocomplete="off" />
+
+              <div>
+                <button id="guessbutton">Submit</button>
+                <button id="seeresponsehistory">Previous Responses</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div id="completiongridbonus" class="hidden">
-        <table>
-          <tr id="difficultybar">
-            <td>1</td>
-            <td>2</td>
-          </tr>
-
-          <tr id="completionbar">
-            <td><img src="icons/check.svg" /></td>
-            <td><img src="icons/check.svg" /></td>
-          </tr>
-        </table>
-      </div>
-
-      <div id="dayguesses">
-        <table>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-        </table>
-      </div>
-
-      <div id="guessbar">
+      <div id="objectcluemenu">
         <div>
-          <input id="guessinput" type="text" autocomplete="off" />
-
-          <div>
-            <button id="guessbutton">Submit</button>
-            <button id="seeresponsehistory">Previous Responses</button>
-          </div>
+          <img id="objectcluemenuclose" src="icons/close.svg" />
         </div>
-      </div>
 
-      <div id="objectcluemenuoverlay" class="overlay">
-        <div id="objectcluemenu">
-          <div>
-            <img id="objectcluemenuclose" src="icons/close.svg" />
-          </div>
+        <h1 id="category">Category</h1>
 
-          <h1 id="category">Category</h1>
+        <table>
+          <tr>
+            <td><span class="fit-text">10/19</span></td>
+          </tr>
+          <tr>
+            <td><span class="fit-text">10/19</span></td>
+          </tr>
+          <tr>
+            <td><span class="fit-text">10/19</span></td>
+          </tr>
+          <tr>
+            <td><span class="fit-text">10/19</span></td>
+          </tr>
+          <tr>
+            <td><span class="fit-text">10/19</span></td>
+          </tr>
+          <tr>
+            <td><span class="fit-text">10/19</span></td>
+          </tr>
+          <tr>
+            <td><span class="fit-text">10/19</span></td>
+          </tr>
+        </table>
 
-          <table>
-            <tr>
-              <td>10/19</td>
-            </tr>
-            <tr>
-              <td>10/20</td>
-            </tr>
-            <tr>
-              <td>10/21</td>
-            </tr>
-            <tr>
-              <td>10/22</td>
-            </tr>
-            <tr>
-              <td>10/23</td>
-            </tr>
-            <tr>
-              <td>10/24</td>
-            </tr>
-            <tr>
-              <td>10/25</td>
-            </tr>
-          </table>
+        <img id="leftarrow" class="arrow" src="icons/arrowback.svg" />
+        <img id="rightarrow" class="arrow" src="icons/arrow.svg" />
 
-          <img id="leftarrow" class="arrow" src="icons/arrowback.svg" />
-          <img id="rightarrow" class="arrow" src="icons/arrow.svg" />
-
-          <h2 id="clueindex">0</h2>
-        </div>
+        <h2 id="clueindex">0</h2>
       </div>
 
       <div id="countdownmenu">
