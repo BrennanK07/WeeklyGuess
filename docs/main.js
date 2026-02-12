@@ -117,15 +117,24 @@ let currentClueMenuPage = -1;
 
 /* Forced Flags */
 let FORCE_WEEK_COMPLETE = false;
+
+let FORCE_DAY_OF_WEEK = false;
 let FORCED_DAY_OF_WEEK = 6 //dayOfWeek;
-let FORCED_SOLUTION_ID = 1 //activeSolutionId;
+
+let FORCE_SOLUTION_ID = true;
+let FORCED_SOLUTION_ID = 2 //activeSolutionId;
 
 /* Internal Flags */
 let displayedCountdownMenu = false;
 
 /* Flag Controlled Code */
-dayOfWeek = FORCED_DAY_OF_WEEK;
-activeSolutionId = FORCED_SOLUTION_ID;
+if (FORCE_DAY_OF_WEEK) {
+    dayOfWeek = FORCED_DAY_OF_WEEK;
+}
+
+if (FORCE_SOLUTION_ID) {
+    activeSolutionId = FORCED_SOLUTION_ID;
+}
 
 async function restoreGuesses() {
     if (guessData == null) {
@@ -133,15 +142,6 @@ async function restoreGuesses() {
     } else {
         //set guesses to guesses already done today if found
         let dayGuessData = guessData.find((guessData) => guessData.date === todayDate);
-
-        if (dayGuessData != undefined) {
-            //console.log(dayGuessData.guesses);
-            for (let i = 0; i < dayGuessData.guesses.length; i++) {
-                //console.log(dayGuessData.guesses[i]);
-                answerBox.value = dayGuessData.guesses[i];
-                await guess();
-            }
-        }
 
         //go through previous day responses for the week
         for (let i = 0; i < dayOfWeek; i++) {
@@ -172,6 +172,16 @@ async function restoreGuesses() {
                         }
                     }
                 }
+            }
+        }
+
+        // today responses
+        if (dayGuessData != undefined) {
+            //console.log(dayGuessData.guesses);
+            for (let i = 0; i < dayGuessData.guesses.length; i++) {
+                //console.log(dayGuessData.guesses[i]);
+                answerBox.value = dayGuessData.guesses[i];
+                await guess();
             }
         }
     }
@@ -418,6 +428,7 @@ async function guess() {
             if (json.weeks[activeSolutionId].solutions[i].solution == answer) {
                 correctId = i;
             }
+            //console.log(correctId);
         }
     } else {
         //bonus
@@ -428,10 +439,14 @@ async function guess() {
         }
     }
 
+    /*console.log(correctId != -1,
+        !objectClueChecks[correctId].classList.contains("visible"),
+        dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099", !weekCompleted, !completedBeforeToday);*/
+
     if (
         correctId != -1 &&
         !objectClueChecks[correctId].classList.contains("visible") &&
-        dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099" && !weekCompleted && !completedBeforeToday
+        dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099" && !weekCompleted
     ) {
         dayGuessCells[totalGuessesToday].style.backgroundColor = "#00ff0099";
         objectClueChecks[correctId].classList.add("visible");
@@ -447,11 +462,9 @@ async function guess() {
             score += 5 * (parseInt(json.weeks[activeSolutionId].solutions[correctId].difficulty) + 1) * (7 - dayOfWeek);
             updateScoreDisplay();
         }
-
-        //console.log("correct");
     } else if (
         correctId != -1 &&
-        !bonusObjectClueChecks[correctId].classList.contains("visible") &&
+        weekCompleted && completedBeforeToday && !bonusObjectClueChecks[correctId].classList.contains("visible") &&
         dayGuessCells[totalGuessesToday].style.backgroundColor != "#00ff0099" && weekCompleted && completedBeforeToday
     ) {
         //bonus check
@@ -1088,7 +1101,7 @@ function fitCellText(span) {
     const cell = span.parentElement;
     let clueMenuWidth = objectClueMenu.style.width;
 
-    console.log(clueMenuWidth);
+    //console.log(clueMenuWidth);
 
     let fontSize = 25;
 
