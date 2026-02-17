@@ -580,6 +580,10 @@ function openClueMenu(itemIndex, isBonus = false) {
     let padStart = `<span class="fit-text">`;
     let padEnd = "</span>";
 
+    //not wokring anyway and breaking other stuff for now
+    padStart = "";
+    padEnd = "";
+
     if (!isBonus) {
         objectClueMenuCategory.innerHTML = json.weeks[activeSolutionId].solutions[itemIndex].category;
 

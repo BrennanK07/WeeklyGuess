@@ -222,7 +222,7 @@ td > image {
   position: fixed;
 
   width: 90%;
-  height: 60%;
+  height: 500px;
 
   left: 50%;
   top: 50%;
@@ -281,12 +281,13 @@ td > image {
   overflow: hidden;
 }
 
+/*
 .fit-text {
   white-space: normal;
   line-height: 1.1;
 
   overflow: hidden;
-}
+}*/
 
 #objectcluemenu > table td.hidden {
   border: 0px;
