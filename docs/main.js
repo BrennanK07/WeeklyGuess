@@ -124,6 +124,8 @@ let FORCED_DAY_OF_WEEK = 6 //dayOfWeek;
 let FORCE_SOLUTION_ID = true;
 let FORCED_SOLUTION_ID = 2 //activeSolutionId;
 
+let FORCE_WEEK_COMPLETE_SCREEN = false;
+
 /* Internal Flags */
 let displayedCountdownMenu = false;
 
@@ -136,13 +138,14 @@ if (FORCE_SOLUTION_ID) {
     activeSolutionId = FORCED_SOLUTION_ID;
 }
 
+if (FORCE_WEEK_COMPLETE_SCREEN) {
+    weekCompleteMenu.classList.add("visible");
+}
+
 async function restoreGuesses() {
     if (guessData == null) {
         guessData = [];
     } else {
-        //set guesses to guesses already done today if found
-        let dayGuessData = guessData.find((guessData) => guessData.date === todayDate);
-
         //go through previous day responses for the week
         for (let i = 0; i < dayOfWeek; i++) {
             let dateStr = getDateStr(i + 1, false);
@@ -150,6 +153,8 @@ async function restoreGuesses() {
             let dateSaveIndex = guessData.findIndex((guessData) => guessData.date == dateStr);
 
             if (dateSaveIndex != -1) {
+                //console.log(guessData[dateSaveIndex].guesses);
+
                 let loadedGuesses = guessData[dateSaveIndex].guesses;
 
                 for (let j = 0; j < loadedGuesses.length; j++) {
@@ -174,15 +179,20 @@ async function restoreGuesses() {
                 }
             }
         }
+    }
+}
 
-        // today responses
-        if (dayGuessData != undefined) {
-            //console.log(dayGuessData.guesses);
-            for (let i = 0; i < dayGuessData.guesses.length; i++) {
-                //console.log(dayGuessData.guesses[i]);
-                answerBox.value = dayGuessData.guesses[i];
-                await guess();
-            }
+async function restoreTodayGuesses() {
+    //set guesses to guesses already done today if found
+    let dayGuessData = guessData.find((guessData) => guessData.date === todayDate);
+
+    // today responses
+    if (dayGuessData != undefined) {
+        //console.log(dayGuessData.guesses);
+        for (let i = 0; i < dayGuessData.guesses.length; i++) {
+            //console.log(dayGuessData.guesses[i]);
+            answerBox.value = dayGuessData.guesses[i];
+            await guess();
         }
     }
 }
@@ -401,8 +411,9 @@ bonusObjectClues.forEach((objectClue, index) => {
     objectClue.addEventListener("click", () => openClueMenu(index, true));
 });
 
-start();
 await restoreGuesses();
+start();
+await restoreTodayGuesses();
 setupComplete = true;
 
 async function guess() {
@@ -523,7 +534,7 @@ async function guess() {
             }
         }
 
-        if (allComplete) {
+        if (allComplete && (!completedBeforeToday)) {
             weekCompleteMenu.classList.add("visible");
             score += 50 * (7 - dayOfWeek);
             updateScoreDisplay();
@@ -981,6 +992,7 @@ function start() {
     for (let i = 0; i < 7; i++) {
         if (!objectClueChecks[i].classList.contains("visible")) {
             allComplete = false;
+            //console.log(i);
         }
     }
 

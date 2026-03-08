@@ -138,6 +138,8 @@
 
   top: 50%;
   left: 50%;
+
+  box-sizing: border-box;
 }
 
 #objectcluemenu.visible {
@@ -171,4 +173,174 @@
 #objectcluemenu #objectcluemenuclose {
   width: 100px;
   height: 100px;
+}
+
+#countdownmenu,
+#infomenu,
+#weekcompletemenu,
+#infomenupage2,
+#calendarpopup,
+#lastweekanswers {
+  width: 100%;
+  height: 70%;
+
+  max-height: none;
+
+  top: 50%;
+  left: 50%;
+
+  box-sizing: border-box;
+}
+
+#countdownmenu h1,
+#infomenu h1,
+#weekcompletemenu h1,
+#infomenupage2 h1,
+#lastweekanswers h1 {
+  font-family: "Lexend Deca", monospace;
+  color: white;
+
+  font-size: 55px;
+  font-weight: 500;
+
+  font-variant-numeric: tabular-nums;
+
+  text-align: center;
+
+  margin: 0%;
+}
+
+#infomenu h1 {
+  font-size: 75px;
+}
+
+#countdownmenu h2,
+#infomenu h2,
+#weekcompletemenu h2,
+#infomenupage2 h2,
+#calendarpopup h2,
+#lastweekanswers h2 {
+  font-size: 35px;
+}
+
+#countdownmenu #countdown {
+  font-size: 175px;
+}
+
+#exitbutton {
+  width: 100px;
+  height: 100px;
+}
+
+#countdownmenu table {
+  padding-top: 25px;
+  width: 100%;
+
+  font-family: "Lexend Deca";
+  color: #b7c5cc;
+
+  text-align: center;
+}
+
+#countdownmenu table td {
+  font-size: 100px;
+}
+
+#countdownmenu table th {
+  font-size: 30px;
+}
+
+.share {
+  background-color: rgb(47, 138, 47);
+
+  color: rgb(255, 255, 255);
+  font-family: "Lexend Deca";
+
+  padding: 40px;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  position: fixed;
+
+  bottom: 5%;
+}
+
+.share > h3 {
+  font-size: 50px;
+
+  margin: 10px;
+
+  margin-left: 10px;
+  margin-right: 10px;
+
+  user-select: none;
+}
+
+.share > img {
+  width: 80px;
+  height: 80px;
+
+  user-select: none;
+}
+
+#weekresponses {
+  box-sizing: border-box;
+
+  width: 100%;
+}
+
+#weekresponses #dayofweekindicator table {
+  font-size: 45px;
+}
+
+#weekresponses #dayofweekindicator table td {
+  height: 100px;
+  width: 100px;
+
+  font-size: 45px;
+}
+
+#weekresponses #dateselectbar img {
+  margin: 20px;
+
+  height: 100px;
+  width: 100px;
+}
+
+#weekresponses #dateselectbar #calendarbutton {
+  margin-left: 70px;
+}
+
+#weekresponses #dateselectbar > h1 {
+  font-size: 50px;
+}
+
+#calendarpopup #backarrow {
+  width: 100px;
+}
+
+#calendarpopup #forwardarrow {
+  width: 100px;
+}
+
+#calendarpopup #calendar table td {
+  font-size: 45px;
+}
+
+#calendarpopup #calendar table {
+  width: 95%;
+}
+
+#calendarpopup #dateselectbar select {
+  width: 300px;
+  height: 100px;
+
+  font-size: 45px;
+}
+
+#calendardate {
+  font-size: 100px;
 }

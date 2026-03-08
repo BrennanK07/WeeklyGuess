@@ -382,8 +382,23 @@ td > image {
     visibility 0.2s step-end;
 }
 
+#calendarpopup {
+  display: block;
+  height: 60%;
+}
+
+#calendarpopup #calendar {
+  width: 100%;
+}
+
+#calendardate {
+  font-size: 25px;
+}
+
 #calendarpopup #calendar table {
-  width: 80%;
+  width: 70%;
+
+  aspect-ratio: 7/6;
 
   text-align: center;
 
@@ -400,7 +415,6 @@ td > image {
 
 #calendarpopup #calendar table td {
   flex: 1;
-  aspect-ratio: 1/1;
 
   border: 2px solid #303436;
   height: 50px;
@@ -453,7 +467,8 @@ td > image {
 #infomenu > div,
 #weekcompletemenu > div,
 #infomenupage2 > div,
-#lastweekanswers > div {
+#lastweekanswers > div,
+#calendarpopup > div {
   width: 90%;
   height: 90%;
 
@@ -467,7 +482,8 @@ td > image {
 #infomenu h1,
 #weekcompletemenu h1,
 #infomenupage2 h1,
-#lastweekanswers h1 {
+#lastweekanswers h1,
+#calendarpopup h1 {
   font-family: "Lexend Deca", monospace;
   color: white;
 
@@ -504,7 +520,8 @@ td > image {
   margin: 0%;
 }
 
-#weekcompletemenu p {
+#weekcompletemenu p,
+#calendarpopup p {
   font-family: "Lexend Deca", monospace;
   color: rgb(196, 196, 196);
 
@@ -555,7 +572,8 @@ td > image {
 #infomenu #exitbutton,
 #weekcompletemenu #exitbutton,
 #infomenupage2 #exitbutton,
-#lastweekanswers #exitbutton {
+#lastweekanswers #exitbutton,
+#calendarpopup #exitbutton {
   position: fixed;
 
   right: 2%;
@@ -566,7 +584,8 @@ td > image {
 
 #countdownmenu #exitbutton:hover,
 #infomenu #exitbutton:hover,
-#weekcompletemenu #exitbutton:hover {
+#weekcompletemenu #exitbutton:hover,
+#calendarpopup #exitbutton:hover {
   transform: scale(1.1);
 
   transition: transform 0.1s ease-in-out;
@@ -679,30 +698,30 @@ td > image {
   text-align: center;
 }
 
-#weekresponses #dateselectbar {
+#dateselectbar {
   display: flex;
   justify-content: center;
 }
 
-#weekresponses #dateselectbar img {
+#dateselectbar img {
   margin: 20px;
 
   transition: transform 0.2s ease;
 }
 
-#weekresponses #dateselectbar #arrowright:hover {
+#dateselectbar #arrowright:hover {
   transform: scale(1.2);
 
   transition: transform 0.2s ease;
 }
 
-#weekresponses #dateselectbar #arrowleft {
+#dateselectbar #arrowleft {
   transform: scaleX(-1);
 
   transition: transform 0.2s ease;
 }
 
-#weekresponses #dateselectbar #arrowleft:hover {
+#dateselectbar #arrowleft:hover {
   transform: scaleX(-1) scale(1.2);
 
   transition: transform 0.2s ease;
@@ -929,7 +948,7 @@ td > image {
 
   position: fixed;
 
-  bottom: 5vh;
+  bottom: 5%;
 }
 
 .share > h3 {
@@ -952,8 +971,8 @@ td > image {
 
 select {
   background-color: #303436;
-  width: 15%;
-  height: 4%;
+  width: 150px;
+  height: 40px;
 
   appearance: none;
   -webkit-appearance: none;
