@@ -122,7 +122,7 @@ let FORCE_DAY_OF_WEEK = false;
 let FORCED_DAY_OF_WEEK = 6 //dayOfWeek;
 
 let FORCE_SOLUTION_ID = true;
-let FORCED_SOLUTION_ID = 2 //activeSolutionId;
+let FORCED_SOLUTION_ID = 3 //activeSolutionId;
 
 let FORCE_WEEK_COMPLETE_SCREEN = false;
 
@@ -430,7 +430,9 @@ async function guess() {
     let answer = answerBox.value;
     answer = formatAnswer(answer);
 
-    answer = await sha256(answer);
+    if ([0, 1, 2].includes(activeSolutionId)) { //only do encryption on old sets
+        answer = await sha256(answer);
+    }
 
     let correctId = -1;
 

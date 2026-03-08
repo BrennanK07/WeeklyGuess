@@ -271,6 +271,170 @@
                 ["5e1ecee06a7fc06f305ae5c12acfe7a7f67b8ece7af76932ed3afab00c3c6921","Computing","Temporary storage","Meant to speed things up","Holds frequently used data","Can become outdated","Often cleared to fix issues\r"],
                 ["497e22fe854a24bcfb8aa568e454fa262cdb64a109e01dabf5793b46326144da","Concept","Boundary / Limit","Marks a change","Once crossed, something happens"," Often used in science and psychology","Can be physical or abstract\r"],
                 ["446be308664e1964b816217ba48334a777837850765f863efbba3c6608da6b90","Physical","Related to motion","Depends on mass and speed","Harder to stop when large","Conserved in closed systems","Used metaphorically for progress"]]
+        },
+
+        {
+            "weekId": "2026-03-08",
+            "solutions": [
+                { "difficulty": "0", "solution": "Lasagna", "category": "Food" },
+                { "difficulty": "1", "solution": "Pixel", "category": "Computing" },
+                { "difficulty": "2", "solution": "Lantern", "category": "Object" },
+                { "difficulty": "3", "solution": "Eclipse", "category": "Thing" },
+                { "difficulty": "0", "solution": "Coral", "category": "Nature" },
+                { "difficulty": "2", "solution": "Napoleon Bonaparte", "category": "Person" },
+                { "difficulty": "1", "solution": "NASA", "category": "Organization" }
+            ],
+            "hint": [
+                {
+                    "hints": [
+                        "Italian origin",
+                        "Baked",
+                        "Sheets",
+                        "Pasta-based dish",
+                        "Stacked in layers",
+                        "Contains sauce and cheese",
+                        "Loved by Garfield"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Screen",
+                        "Resolution",
+                        "Squares",
+                        "Arranged in grid",
+                        "RGB",
+                        "e.g. 1920x1080",
+                        "Screen Dots"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Light",
+                        "Used while camping",
+                        "Typically oil-based",
+                        "Festival",
+                        "Halloween-ish",
+                        "Green _____",
+                        "Historically candle and wick-based"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Astronomical event",
+                        "Involves the Moon",
+                        "Happens a few times per year",
+                        "Happens between the Sun and Moon",
+                        "Creates a shadow",
+                        "Can be total or partial",
+                        "The Moon blocks the Sun"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Sea creature",
+                        "Colorful",
+                        "Found at the sea floor",
+                        "Soft-bodied",
+                        "Found growing from rocks",
+                        "Looks almost like a plant",
+                        "Branchy"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Involved in a revolutionary movement",
+                        "France",
+                        "Remembered for being short",
+                        "Emperor",
+                        "Waterloo",
+                        "Louisiana Purchase",
+                        "General"
+                    ]
+                },
+                {
+                    "hints": [
+                        "Established in 1958",
+                        "Space",
+                        "Houston",
+                        "Engineering and research",
+                        "Moon landing",
+                        "Saturn V",
+                        "Apollo Program"
+                    ]
+                }
+            ],
+            "bonusData":[
+                ["Cairo", "City",
+                    "Pyramids",
+                    "Nile",
+                    "Pharaoh",
+                    "Desert",
+                    "Giza"
+                ],
+                ["United Nations", "Organization",
+                    "Peacekeeping",
+                    "Diplomacy",
+                    "Established after World War II",
+                    "International",
+                    "Security Council"
+                ],
+                [["Galileo Galilei", "Galileo"], "Scientist",
+                    "Telescope",
+                    "Astronomy",
+                    "Italy",
+                    "Pendulum",
+                    "Pre-newtonian physics"
+                ],
+                ["Louvre", "Place",
+                    "Paris",
+                    "Museum",
+                    "Art",
+                    "Pyramid",
+                    "Famous Robberies"
+                ],
+                ["Genghis Khan", "Historical Figure",
+                    "Empire",
+                    "Horse",
+                    "Conqueror",
+                    "Silk Road",
+                    "Asia"
+                ],
+                ["Quark", "Thing",
+                    "Particle",
+                    "Physics",
+                    "Flavor",
+                    "Sub-atomic",
+                    "Fundamental"
+                ],
+                ["Fibonacci", "Person",
+                    "Mathematics",
+                    "Nature",
+                    "Spiral",
+                    "Sequence",
+                    "Golden Ratio"
+                ],
+                ["Yoda", "Character",
+                    "Jedi",
+                    "Force",
+                    "Swamp",
+                    "Like this, he talks",
+                    "Green"
+                ],
+                ["Alexander Hamilton", "Historical Figure",
+                    "Founding Father",
+                    "Treasury",
+                    "Federalist",
+                    "Duel",
+                    "Constitution"
+                ],
+                ["Amazon", "Place",
+                    "Rainforest",
+                    "River",
+                    "Jungle",
+                    "South America",
+                    "Shares name with a company"
+                ]
+            ]
         }
     ]
 }
