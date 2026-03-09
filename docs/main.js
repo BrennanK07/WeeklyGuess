@@ -434,6 +434,8 @@ async function guess() {
         answer = await sha256(answer);
     }
 
+    console.log(answer);
+
     let correctId = -1;
 
     if (!(completedBeforeToday && weekCompleted)) {
@@ -442,6 +444,7 @@ async function guess() {
                 correctId = i;
             }
             //console.log(correctId);
+            //console.log(json.weeks[activeSolutionId].solutions[i].solution, answer);
         }
     } else {
         //bonus

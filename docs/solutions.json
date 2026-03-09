@@ -276,13 +276,13 @@
         {
             "weekId": "2026-03-08",
             "solutions": [
-                { "difficulty": "0", "solution": "Lasagna", "category": "Food" },
-                { "difficulty": "1", "solution": "Pixel", "category": "Computing" },
-                { "difficulty": "2", "solution": "Lantern", "category": "Object" },
-                { "difficulty": "3", "solution": "Eclipse", "category": "Thing" },
-                { "difficulty": "0", "solution": "Coral", "category": "Nature" },
-                { "difficulty": "2", "solution": "Napoleon Bonaparte", "category": "Person" },
-                { "difficulty": "1", "solution": "NASA", "category": "Organization" }
+                { "difficulty": "0", "solution": "lasagna", "category": "Food" },
+                { "difficulty": "1", "solution": "pixel", "category": "Computing" },
+                { "difficulty": "2", "solution": "lantern", "category": "Object" },
+                { "difficulty": "3", "solution": "eclipse", "category": "Thing" },
+                { "difficulty": "0", "solution": "coral", "category": "Nature" },
+                { "difficulty": "2", "solution": "napoleon bonaparte", "category": "Person" },
+                { "difficulty": "1", "solution": "nasa", "category": "Organization" }
             ],
             "hint": [
                 {
