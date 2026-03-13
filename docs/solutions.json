@@ -276,13 +276,13 @@
         {
             "weekId": "2026-03-08",
             "solutions": [
-                { "difficulty": "0", "solution": "lasagna", "category": "Food" },
-                { "difficulty": "1", "solution": "pixel", "category": "Computing" },
-                { "difficulty": "2", "solution": "lantern", "category": "Object" },
-                { "difficulty": "3", "solution": "eclipse", "category": "Thing" },
-                { "difficulty": "0", "solution": "coral", "category": "Nature" },
-                { "difficulty": "2", "solution": "napoleon bonaparte", "category": "Person" },
-                { "difficulty": "1", "solution": "nasa", "category": "Organization" }
+                { "difficulty": "0", "solution": ["lasagna"], "category": "Food" },
+                { "difficulty": "1", "solution": ["pixel"], "category": "Computing" },
+                { "difficulty": "2", "solution": ["lantern"], "category": "Object" },
+                { "difficulty": "3", "solution": ["eclipse", "solar eclipse", "lunar eclipse"], "category": "Thing" },
+                { "difficulty": "0", "solution": ["coral", "sea coral"], "category": "Nature" },
+                { "difficulty": "2", "solution": ["napoleon bonaparte", "napoleon"], "category": "Person" },
+                { "difficulty": "1", "solution": ["nasa"], "category": "Organization" }
             ],
             "hint": [
                 {
@@ -364,14 +364,14 @@
                 }
             ],
             "bonusData":[
-                ["Cairo", "City",
+                [["Cairo"], "City",
                     "Pyramids",
                     "Nile",
                     "Pharaoh",
                     "Desert",
                     "Giza"
                 ],
-                ["United Nations", "Organization",
+                [["United Nations"], "Organization",
                     "Peacekeeping",
                     "Diplomacy",
                     "Established after World War II",
@@ -385,49 +385,49 @@
                     "Pendulum",
                     "Pre-newtonian physics"
                 ],
-                ["Louvre", "Place",
+                [["Louvre"], "Place",
                     "Paris",
                     "Museum",
                     "Art",
                     "Pyramid",
                     "Famous Robberies"
                 ],
-                ["Genghis Khan", "Historical Figure",
+                [["Genghis Khan"], "Historical Figure",
                     "Empire",
                     "Horse",
                     "Conqueror",
                     "Silk Road",
                     "Asia"
                 ],
-                ["Quark", "Thing",
+                [["Quark"], "Thing",
                     "Particle",
                     "Physics",
                     "Flavor",
                     "Sub-atomic",
                     "Fundamental"
                 ],
-                ["Fibonacci", "Person",
+                [["Fibonacci"], "Person",
                     "Mathematics",
                     "Nature",
                     "Spiral",
                     "Sequence",
                     "Golden Ratio"
                 ],
-                ["Yoda", "Character",
+                [["Yoda"], "Character",
                     "Jedi",
                     "Force",
                     "Swamp",
                     "Like this, he talks",
                     "Green"
                 ],
-                ["Alexander Hamilton", "Historical Figure",
+                [["Alexander Hamilton"], "Historical Figure",
                     "Founding Father",
                     "Treasury",
                     "Federalist",
                     "Duel",
                     "Constitution"
                 ],
-                ["Amazon", "Place",
+                [["Amazon"], "Place",
                     "Rainforest",
                     "River",
                     "Jungle",

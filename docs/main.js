@@ -159,7 +159,13 @@ async function restoreGuesses() {
 
                 for (let j = 0; j < loadedGuesses.length; j++) {
                     //console.log(formatAnswer(loadedGuesses[j]));
-                    let loadedGuess = await sha256(formatAnswer(loadedGuesses[j]));
+                    let loadedGuess = loadedGuesses[j];
+
+                    loadedGuess = formatAnswer(loadedGuess);
+
+                    if ([0, 1, 2].includes(activeSolutionId)) { //only do encryption on old sets
+                        loadedGuess = await sha256(loadedGuess);
+                    }
 
                     let correctId = -1;
                     for (let k = 0; k < 7; k++) {
@@ -434,13 +440,13 @@ async function guess() {
         answer = await sha256(answer);
     }
 
-    console.log(answer);
+    //console.log(answer);
 
     let correctId = -1;
 
     if (!(completedBeforeToday && weekCompleted)) {
         for (let i = 0; i < 7; i++) {
-            if (json.weeks[activeSolutionId].solutions[i].solution == answer) {
+            if (containsAnswer(json.weeks[activeSolutionId].solutions[i].solution, answer)) {
                 correctId = i;
             }
             //console.log(correctId);
@@ -449,7 +455,7 @@ async function guess() {
     } else {
         //bonus
         for (let i = 0; i < 2; i++) {
-            if (json.weeks[activeSolutionId].bonusData[i + 2 * (dayOfWeek - 2)][0] == answer) {
+            if (containsAnswer(json.weeks[activeSolutionId].bonusData[i + 2 * (dayOfWeek - 2)][0], answer)) {
                 correctId = i;
             }
         }
@@ -563,6 +569,18 @@ async function guess() {
             displayedCountdownMenu = true;
         }
     }
+}
+
+function containsAnswer(solution, guess) {
+    for (let i = 0; i < solution.length; i++) {
+        if (guess == formatAnswer(solution[i])) {
+            return true;
+        }
+
+        //console.log(formatAnswer(solution[i]), guess);
+    }
+
+    return false;
 }
 
 function formatAnswer(a) {
@@ -1081,7 +1099,7 @@ function updateWeekCompletionPercentageStat() {
         percentage = 100;
     }
 
-    document.getElementById("weekprogressstat").innerHTML = percentage + "%";
+    //document.getElementById("weekprogressstat").innerHTML = percentage + "%";
 }
 
 function isMobile() {
