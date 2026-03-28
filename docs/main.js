@@ -143,7 +143,7 @@ if (FORCE_WEEK_COMPLETE_SCREEN) {
 }
 
 async function restoreGuesses() {
-    if (guessData == null) {
+    if (guessData == null || guessData == {}) {
         guessData = [];
     } else {
         //go through previous day responses for the week
