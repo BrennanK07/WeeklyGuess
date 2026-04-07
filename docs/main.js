@@ -169,7 +169,7 @@ async function restoreGuesses() {
 
                     let correctId = -1;
                     for (let k = 0; k < 7; k++) {
-                        if (json.weeks[activeSolutionId].solutions[k].solution == loadedGuess) {
+                        if (containsAnswer(json.weeks[activeSolutionId].solutions[k].solution, answer)) {
                             correctId = k;
                         }
                     }
