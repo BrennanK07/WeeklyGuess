@@ -177,7 +177,7 @@ async function restoreGuesses() {
                     if (correctId != -1 && !objectClueChecks[correctId].classList.contains("visible")) {
                         objectClueChecks[correctId].classList.add("visible");
 
-                        if (i + 1 == dayOfWeek) {
+                        if (i == dayOfWeek) {
                             if (!FORCE_WEEK_COMPLETE)
                                 completedBeforeToday = false;
                         }
@@ -376,12 +376,14 @@ document.addEventListener("keydown", function (event) {
         closeClueMenu();
     }
 
-    if (event.key == "ArrowLeft") {
-        objectClueMenuLeftButtonPress();
-    }
+    if (document.activeElement != answerBox) {
+        if (event.key == "ArrowLeft") {
+            objectClueMenuLeftButtonPress();
+        }
 
-    if (event.key == "ArrowRight") {
-        objectClueMenuRightButtonPress();
+        if (event.key == "ArrowRight") {
+            objectClueMenuRightButtonPress();
+        }
     }
 });
 
