@@ -169,7 +169,7 @@ async function restoreGuesses() {
 
                     let correctId = -1;
                     for (let k = 0; k < 7; k++) {
-                        if (containsAnswer(json.weeks[activeSolutionId].solutions[k].solution, answer)) { //TODO: fix not wokring when multiple correct answers
+                        if (containsAnswer(json.weeks[activeSolutionId].solutions[k].solution, loadedGuess)) {
                             correctId = k;
                         }
                     }
