@@ -113,6 +113,8 @@ let weekCompleted = false;
 
 let currentClueMenuPage = -1;
 
+let ordinalNumbers = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"];
+
 //FLAGS (for debugging etc)
 
 /* Forced Flags */
@@ -374,6 +376,7 @@ document.addEventListener("keydown", function (event) {
 
     if (event.key == "Escape") {
         closeClueMenu();
+        document.activeElement.blur();
     }
 
     if (document.activeElement != answerBox) {
@@ -638,7 +641,11 @@ function openClueMenu(itemIndex, isBonus = false) {
 
         for (let i = 0; i < 7; i++) {
             if (i < 5) {
-                objectClueTable[i].innerHTML = json.weeks[activeSolutionId].bonusData[itemIndex + ((dayOfWeek - 2) * 2)][i + 2];
+                if (i < totalGuessesToday + 1) {
+                    objectClueTable[i].innerHTML = json.weeks[activeSolutionId].bonusData[itemIndex + ((dayOfWeek - 2) * 2)][i + 2];
+                } else {
+                    objectClueTable[i].innerHTML = "Unlocks after " + ordinalNumbers[i - 1] + " guess";
+                }
             } else {
                 //remove from view
                 objectClueTable[i].classList.add("hidden");
@@ -769,7 +776,7 @@ async function stepResponseHistoryDate(val) {
 
                 let correctId = -1;
                 for (let i = 0; i < 7; i++) {
-                    if (json.weeks[0].solutions[i].solution == histAnswer) {
+                    if (json.weeks[0].solutions[i].solution.contains == histAnswer) {
                         correctId = i;
                     }
                 }
