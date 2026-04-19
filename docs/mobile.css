@@ -27,13 +27,20 @@
   height: 150px;
 }
 
-#completiongrid {
+#completiongrid,
+#completiongridbonus {
   position: absolute;
 
   top: 50px;
 }
 
-#completiongrid table td {
+#completiongridbonus {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#completiongrid table td,
+#completiongridbonus table td {
   width: calc(100vw / 7);
   height: calc(100vw / 7);
 

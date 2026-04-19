@@ -14,7 +14,7 @@ body {
 }
 
 #pagesquasher {
-  max-width: 1000px;
+  max-width: min(1000px, 95vw);
   height: calc(100% - 120px);
 
   position: absolute;
@@ -36,6 +36,8 @@ body {
 #guessbar > div {
   display: flex;
 
+  width: 100%;
+
   justify-content: center;
 }
 
@@ -46,7 +48,7 @@ body {
 
 #guessbar > div > input {
   height: 50px;
-  width: 500px;
+  width: auto;
 
   background-color: #00000000;
   color: #b7c5cc;

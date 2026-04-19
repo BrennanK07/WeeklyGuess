@@ -1,0 +1,165 @@
+#guessbar > div > input {
+  height: 8vh;
+  width: 70%;
+}
+
+#dayguesses > table td {
+  height: 6vh;
+  font-size: 4vh;
+
+  width: 90%;
+}
+
+#guessbar button {
+  height: 5vh;
+  font-size: 2vh;
+
+  width: 100%;
+}
+
+#guessbar #seeresponsehistory {
+  font-size: 2vh;
+}
+
+#completiongrid,
+#completiongridbonus {
+  padding-bottom: 5vh;
+}
+
+#completiongrid > table td,
+#completiongridbonus > table td {
+  height: 6vh;
+  width: 6vh;
+
+  font-size: 4vh;
+}
+
+#completionbar > td img {
+  height: 6vh;
+  width: 6vh;
+}
+
+#topbanner {
+  height: 10vh;
+}
+
+#dayguesses {
+  padding-bottom: 5vh;
+}
+
+#topbanner {
+  height: min(75px, 10vh);
+}
+
+#bannerspacing {
+  height: min(75px, 10vh);
+}
+
+#pagesquasher {
+  bottom: 0;
+}
+
+#topbanner #logo {
+  height: min(75px, 10vh);
+  width: auto;
+}
+
+#topbanner h2 {
+  font-size: min(40px, 4vh);
+}
+
+#topbanner p {
+  font-size: min(20px, 2vh);
+}
+
+#miscicons {
+  height: min(50px, 9vh);
+  margin: 1px;
+}
+
+#miscicons > * {
+  margin: 1px;
+}
+
+#objectcluemenu {
+  height: 80vh;
+  width: 60vw;
+  padding-top: 12vh;
+  padding-bottom: 10px;
+
+  transform: translate(-50%, -50%);
+}
+
+#objectcluemenu > table td {
+  height: 5vh;
+  font-size: 4vh;
+}
+
+#objectcluemenu h1 {
+  font-size: 6vh;
+}
+
+#objectcluemenuclose {
+  height: 10vh;
+}
+
+#objectcluemenu .arrow {
+  height: 7vh;
+}
+
+#objectcluemenu #clueindex {
+  font-size: 5vh;
+  bottom: 0;
+}
+
+#countdownmenu,
+#infomenu,
+#weekcompletemenu,
+#infomenupage2,
+#calendarpopup,
+#lastweekanswers {
+  height: 90%;
+  width: 70vw;
+
+  transform: translate(-50%, -50%);
+}
+
+#countdownmenu h1,
+#infomenu h1,
+#weekcompletemenu h1,
+#infomenupage2 h1,
+#lastweekanswers h1,
+#calendarpopup h1 {
+  font-size: 7vh;
+}
+
+#countdownmenu h2,
+#infomenu h2,
+#weekcompletemenu h2,
+#infomenupage2 h2,
+#calendarpopup h2,
+#lastweekanswers h2 {
+  font-size: 4vh;
+}
+
+#weekcompletemenu p,
+#calendarpopup p {
+  font-size: 7vh;
+}
+
+#countdownmenu #exitbutton,
+#infomenu #exitbutton,
+#weekcompletemenu #exitbutton,
+#infomenupage2 #exitbutton,
+#lastweekanswers #exitbutton,
+#calendarpopup #exitbutton {
+  height: 7vh;
+}
+
+#infomenu #nextpagebutton {
+  width: 7vh;
+}
+
+#infomenupage2 #prevpagebutton {
+  width: 7vh;
+}
